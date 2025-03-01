@@ -4,6 +4,7 @@ import "./globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import StoryblokProvider from "../components/StoryblokProvider";
 import { Page } from "@/components/Page";
+import { Hero } from "@/components/Hero";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,8 @@ storyblokInit({
     region: "eu",
   },
   components: {
-    page: Page
+    page: Page,
+    hero: Hero
   }
 });
 

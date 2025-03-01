@@ -1,12 +1,14 @@
 "use client";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { Page } from "@/components/Page";
+import { Hero } from "@/components/Hero";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
   use: [apiPlugin],
   components: {
-    page: Page
+    page: Page,
+    hero: Hero
   }
 });
 
