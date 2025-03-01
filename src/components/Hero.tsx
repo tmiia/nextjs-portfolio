@@ -1,6 +1,7 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
 import BackgroundCanvas from "./threejs/BackgroundCanvas/BackgroundCanvas";
+import Background from "./Background/Background";
 
 interface HeroProps {
   blok: {
@@ -42,6 +43,6 @@ export const Hero = ({ blok }: HeroProps) => {
     //   </div>
     // </header>
 
-    <BackgroundCanvas />
+    <Background />
   );
 };
