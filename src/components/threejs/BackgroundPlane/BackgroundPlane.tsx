@@ -105,11 +105,9 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
       const currentFactor = transitionFactor;
       const targetFactor = theme === 'dark' ? 0 : 1;
 
-      if (Math.abs(currentFactor - targetFactor) > 0.001) { // Use small threshold for comparison
-        // Use a fixed transition rate instead of multiplying by the difference
-        const transitionRate = delta * 1.5; // Adjust this value to control speed
+      if (Math.abs(currentFactor - targetFactor) > 0.001) {
+        const transitionRate = delta * 1.5;
 
-        // Move toward target at a constant rate
         const newFactor = targetFactor > currentFactor
           ? Math.min(currentFactor + transitionRate, targetFactor)
           : Math.max(currentFactor - transitionRate, targetFactor);
