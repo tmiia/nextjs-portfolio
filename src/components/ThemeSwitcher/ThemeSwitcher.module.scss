@@ -3,4 +3,13 @@
   position: fixed;
   top: 2rem;
   right: 2rem;
+
+  background-color: var(--switcher-bg);
+  border: 1px solid var(--switcher-border);
+  border-radius: 1000px;
+  padding: 0.75rem;
+
+  cursor: pointer;
+
+  transition: .3s ease-in-out;
 }

@@ -25,7 +25,7 @@ const ThemeSwitcher = () => {
 
   return (
     <button onClick={handleTheme} className={styles.themeSwitcher}>
-      <span>Click to switch theme to {theme == 'dark' ? 'light' : 'dark'}</span>
+      <span className="sr-only">Click to switch theme to {theme == 'dark' ? 'light' : 'dark'}</span>
     </button>
   )
 }

@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useState } from "react"
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
-    <NextThemesProvider attribute="class" defaultTheme="dark" enableSystem={true}>
+    <NextThemesProvider attribute="data-theme" defaultTheme="dark" enableSystem={true}>
       {children}
     </NextThemesProvider>
   )

@@ -1,6 +1,17 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #1a1a1a;
+  --switcher-border: #ffffff;
+  --switcher-bg: #ffffff42;
+}
+
+:root[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #ffffff;
+  --switcher-border: transparent;
+  --switcher-bg: #ffffff;
 }
 
 html, body {
@@ -19,4 +30,16 @@ html, body {
   html {
     color-scheme: dark;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
