@@ -1,6 +1,7 @@
 "use client";
 import { StoryblokComponent } from "@storyblok/react";
 import { storyblokEditable } from "@storyblok/react";
+import Background from "./Background/Background";
 
 interface PageProps {
   blok: {
@@ -14,6 +15,7 @@ export const Page = ({ blok }: PageProps) => {
 
   return (
     <main {...storyblokEditable(blok)}>
+      <Background />
       {blok.body?.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
