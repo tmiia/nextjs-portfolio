@@ -43,3 +43,11 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1px;
+}

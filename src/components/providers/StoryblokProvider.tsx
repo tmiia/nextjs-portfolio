@@ -1,7 +1,7 @@
 "use client";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { Page } from "@/components/Page";
-import { Hero } from "@/components/Hero";
+import { Hero } from "@/components/Hero/Hero";
 import ThemeProvider from "./ThemeProvider";
 
 storyblokInit({
