@@ -1,6 +1,7 @@
 uniform vec3 uColor1;
 uniform vec3 uColor2;
 uniform float uTime;
+uniform float uThemeTransition;
 in vec2 vUv;
 
 // Classic Perlin 3D Noise
@@ -89,6 +90,7 @@ void main() {
   float speed = 0.2;
   float scale = 4.0;
   vec3 noiseCoord = vec3(vUv * scale, uTime * speed);
+  vec3 themeColor = mix(uColor2, uColor1, uThemeTransition);
 
   float noise = cnoise(noiseCoord) * 0.5 + 0.5;
 
@@ -105,8 +107,8 @@ void main() {
 
   noise = mix(noise, flowNoise, 0.5);
 
-  vec3 color1 = uColor2;
-  vec3 color2 = vec3(0, 0, 0);
+  vec3 color1 = themeColor;
+  vec3 color2 = vec3(0.01, 0, 0.07);
   vec3 color = mix(color1, color2, noise);
 
   float dist = length(vUv - 0.5);

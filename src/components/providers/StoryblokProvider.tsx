@@ -2,6 +2,7 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { Page } from "@/components/Page";
 import { Hero } from "@/components/Hero";
+import ThemeProvider from "./ThemeProvider";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -13,5 +14,9 @@ storyblokInit({
 });
 
 export default function StoryblokProvider({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
+  )
 }

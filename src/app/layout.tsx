@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
-import StoryblokProvider from "../components/StoryblokProvider";
+import StoryblokProvider from "../components/providers/StoryblokProvider";
 import { Page } from "@/components/Page";
 import { Hero } from "@/components/Hero";
+import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,12 +40,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoryblokProvider>
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <StoryblokProvider>
+          <ThemeSwitcher />
           {children}
-        </body>
-      </html>
-    </StoryblokProvider>
+        </StoryblokProvider>
+      </body>
+    </html>
   );
 }
