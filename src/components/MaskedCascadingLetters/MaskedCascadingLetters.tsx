@@ -31,16 +31,16 @@ export const MaskedCascadingLetters = ({ children }: MaskedCascadingLettersProps
 
           gsap.fromTo(
             `.reveal-${i}`,
-            { y: i === 0 ? 0 : ((i + 1) * 150),
+            { y: i === 0 ? 150 : ((i + 1) * 150),
               rotate: i === 0 ? 0 : 4
             },
             {
               y: -((elements.length * 150) - ((i + 1) * 150)),
               rotate: 0,
-              duration: 1,
-              stagger: -0.095,
+              duration: 1.6,
+              stagger: -0.02,
               ease: 'power4.inOut',
-              delay: i === 0 ? 0 : -0.1,
+              delay: i === 0 ? 0 : -0.015,
             }
           );
         }
