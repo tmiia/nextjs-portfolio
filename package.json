@@ -15,11 +15,13 @@
     "@types/dat.gui": "^0.7.13",
     "dat.gui": "^0.7.9",
     "glslify-loader": "^2.0.0",
+    "gsap": "^3.12.7",
     "next": "15.1.7",
     "next-themes": "^0.4.4",
     "raw-loader": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "split-type": "^0.3.4",
     "three": "^0.174.0"
   },
   "devDependencies": {
