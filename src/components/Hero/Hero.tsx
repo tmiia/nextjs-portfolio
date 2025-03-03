@@ -30,7 +30,7 @@ export const Hero = ({ blok }: HeroProps) => {
             <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3>
           </FadingReveal>
       </div>
-      <FadingReveal delay={0.85} duration={1}>
+      <FadingReveal delay={2} duration={1}>
         <p className={styles.heroOverview}>{blok.overview}</p>
       </FadingReveal>
     </header>
