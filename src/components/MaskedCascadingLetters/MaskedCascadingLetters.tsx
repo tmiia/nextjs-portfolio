@@ -15,9 +15,10 @@ export const MaskedCascadingLetters = ({ children }: MaskedCascadingLettersProps
   const refclone1 = useRef<HTMLElement>(null);
   const refclone2 = useRef<HTMLElement>(null);
   const refclone3 = useRef<HTMLElement>(null);
+  const refclone4 = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const elements = [refclone1.current, refclone2.current, refclone3.current]
+    const elements = [refclone1.current, refclone2.current, refclone3.current, refclone4.current]
 
     elements.forEach((el, i) => {
       const text = new SplitType(el as HTMLElement, { types: 'chars' });
@@ -30,13 +31,16 @@ export const MaskedCascadingLetters = ({ children }: MaskedCascadingLettersProps
 
           gsap.fromTo(
             `.reveal-${i}`,
-            { y: i === 0 ? 0 : ((i + 1) * 100) },
+            { y: i === 0 ? 0 : ((i + 1) * 150),
+              rotate: i === 0 ? 0 : 4
+            },
             {
-              y: -((elements.length * 100) - ((i + 1) * 100)),
-              duration: 0.75,
-              stagger: 0.095,
-              ease: 'sine.inOut',
-              delay: 0.2,
+              y: -((elements.length * 150) - ((i + 1) * 150)),
+              rotate: 0,
+              duration: 1,
+              stagger: -0.095,
+              ease: 'power4.inOut',
+              delay: i === 0 ? 0 : -0.1,
             }
           );
         }
@@ -56,21 +60,27 @@ export const MaskedCascadingLetters = ({ children }: MaskedCascadingLettersProps
       {
         React.cloneElement(children, {
           ref: refclone1,
-          className: `${children.props.className || ''} ${styles.clone1}`.trim()
+          className: `${children.props.className || ''} ${styles.clone}`.trim()
         })
       }
 
       {
         React.cloneElement(children, {
           ref: refclone2,
-          className: `${children.props.className || ''} ${styles.clone2}`.trim()
+          className: `${children.props.className || ''} ${styles.clone}`.trim()
         })
       }
 
       {
         React.cloneElement(children, {
           ref: refclone3,
-          className: `${children.props.className || ''} ${styles.clone3}`.trim()
+          className: `${children.props.className || ''} ${styles.clone}`.trim()
+        })
+      }
+
+{
+        React.cloneElement(children, {
+          ref: refclone4,
         })
       }
     </div>

@@ -25,7 +25,7 @@ export const Hero = ({ blok }: HeroProps) => {
           <MaskedCascadingLetters>
             <h1 className={styles.title}>{blok.highlightedTitle}</h1>
           </MaskedCascadingLetters>
-          <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3>
+          {/* <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3> */}
       </div>
       <p className={styles.heroOverview}>{blok.overview}</p>
     </header>
