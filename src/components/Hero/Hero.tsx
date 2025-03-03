@@ -2,6 +2,7 @@
 import { storyblokEditable } from "@storyblok/react";
 import styles from './Hero.module.scss'
 import { MaskedCascadingLetters } from "../MaskedCascadingLetters/MaskedCascadingLetters";
+import { FadingReveal } from "../FadingReveal/FadingReveal";
 
 interface HeroProps {
   blok: {
@@ -25,9 +26,13 @@ export const Hero = ({ blok }: HeroProps) => {
           <MaskedCascadingLetters>
             <h1 className={styles.title}>{blok.highlightedTitle}</h1>
           </MaskedCascadingLetters>
-          {/* <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3> */}
+          <FadingReveal delay={0.8} duration={1}>
+            <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3>
+          </FadingReveal>
       </div>
-      <p className={styles.heroOverview}>{blok.overview}</p>
+      <FadingReveal delay={0.85} duration={1}>
+        <p className={styles.heroOverview}>{blok.overview}</p>
+      </FadingReveal>
     </header>
   );
 };
