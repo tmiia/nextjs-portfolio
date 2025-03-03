@@ -1,6 +1,7 @@
 :root[data-theme="light"] {
   --background-color: #ffffff;
-  --text-color: #333333;
+  --text-color: #1a1a1a;
+  --title-color: #e0e0e0;
   --primary-color: #1a1a1a;
   --switcher-border: #ffffff;
   --switcher-bg: #ffffff42;
@@ -9,6 +10,7 @@
 :root[data-theme="dark"] {
   --background-color: #121212;
   --text-color: #e0e0e0;
+  --title-color: #e0e0e0;
   --primary-color: #ffffff;
   --switcher-border: transparent;
   --switcher-bg: #ffffff;

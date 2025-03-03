@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import StoryblokProvider from "../components/providers/StoryblokProvider";
@@ -7,15 +7,16 @@ import { Page } from "@/components/Page";
 import { Hero } from "@/components/Hero/Hero";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const Thunder = localFont({
+  src: '../../public/fonts/Thunder-VF.ttf',
+  variable: '--font-thunder',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const Dirtyline = localFont({
+  src: '../../public/fonts/Dirtyline.ttf',
+  variable: '--font-dirtyline',
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -41,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${Thunder.variable} ${Dirtyline.variable}`}>
         <StoryblokProvider>
           <ThemeSwitcher />
           {children}

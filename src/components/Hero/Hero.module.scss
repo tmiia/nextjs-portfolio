@@ -14,15 +14,21 @@
 
     .title {
       font-size: 8rem;
+      font-family: var(--font-thunder);
+      font-weight: 900;
     }
 
     .subtitle {
       font-size: 3rem;
-      transform: rotate(-3.78deg) translateY(-50%);
+      font-weight: 300;
+      font-family: var(--font-dirtyline);
+      transform: rotate(-6deg) translate(15%, -40%);
     }
 
     .title, .subtitle {
       text-transform: uppercase;
+      color: var(--title-color);
+      transition: color 1.5s ease-in-out;
     }
   }
 
@@ -30,5 +36,9 @@
     grid-area: 1 / 4 / 2 / 5;
     margin-bottom: 5rem;
     width: 50%;
+    font-family: var(--font-thunder);
+    font-weight: 100;
+    letter-spacing: 1.5px;
+    transition: color 1.5s ease-in;
   }
 }
