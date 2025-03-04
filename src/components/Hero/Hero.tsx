@@ -31,11 +31,11 @@ export const Hero = ({ blok }: HeroProps) => {
           <MaskedCascadingLetters>
             <h1 className={styles.title}>{blok.highlightedTitle}</h1>
           </MaskedCascadingLetters>
-          <FadingReveal delay={0.8} duration={1}>
+          <FadingReveal delay={0.8} duration={2.1}>
             <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3>
           </FadingReveal>
       </div>
-      <FadingReveal delay={2} duration={1}>
+      <FadingReveal delay={4} duration={1}>
         <p className={styles.heroOverview}>{blok.overview}</p>
       </FadingReveal>
 
