@@ -5,7 +5,13 @@
 
   font-size: 7rem;
   font-family: var(--font-thunder);
+  font-weight: 600;
   text-align: center;
   padding: 0 2rem;
   min-height: 100vh;
+
+  .uppercase {
+    font-weight: 500;
+    font-family: var(--font-dirtyline);
+  }
 }
