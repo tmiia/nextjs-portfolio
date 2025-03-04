@@ -32,8 +32,8 @@ export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) 
 
         imagesRef.current.forEach((img, i) => {
           gsap.to(img, {
-            x: clientX - i * 15,
-            y: clientY - i * 15,
+            x: clientX,
+            y: clientY,
             zIndex: imagesRef.current.length - i,
             scale: 1 + i * 0.01,
             borderRadius: 0,
