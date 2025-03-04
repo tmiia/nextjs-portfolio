@@ -7,6 +7,8 @@ import { Page } from "@/components/Page";
 import { Hero } from "@/components/Hero/Hero";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import { CursorImagesTrail } from "@/components/CursorImagesTrail/CursorImagesTrail";
+import { HighlightedRichText } from "@/components/HighlightedRichText/highlightedRichText";
+import { RichText } from "@/components/RichText/RichText";
 
 const Thunder = localFont({
   src: '../../public/fonts/Thunder-VF.ttf',
@@ -33,7 +35,9 @@ storyblokInit({
   components: {
     page: Page,
     hero: Hero,
-    cursorImagesTrail: CursorImagesTrail
+    cursorImagesTrail: CursorImagesTrail,
+    richText: RichText,
+    highlightedRichText: HighlightedRichText,
   }
 });
 

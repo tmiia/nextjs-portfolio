@@ -1,0 +1,11 @@
+.container {
+  height: fit-content;
+
+  img {
+    height: 5.5rem;
+    width: 13rem;
+    border-radius: 4rem;
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+  }
+}

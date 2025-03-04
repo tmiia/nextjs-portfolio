@@ -4,6 +4,8 @@ import { Page } from "@/components/Page";
 import { Hero } from "@/components/Hero/Hero";
 import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
 import ThemeProvider from "./ThemeProvider";
+import { HighlightedRichText } from "../HighlightedRichText/highlightedRichText";
+import { RichText } from "../RichText/RichText";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -11,7 +13,9 @@ storyblokInit({
   components: {
     page: Page,
     hero: Hero,
-    cursorImagesTrail: CursorImagesTrail
+    cursorImagesTrail: CursorImagesTrail,
+    richText: RichText,
+    highlightedRichText: HighlightedRichText
   }
 });
 
