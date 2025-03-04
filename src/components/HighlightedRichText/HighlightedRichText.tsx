@@ -15,14 +15,15 @@ interface HighlightedRichTextProps {
     text?: any;
     [key: string]: any;
   };
+  isLoading: boolean
 }
 
-export const HighlightedRichText = ({ blok }: HighlightedRichTextProps) => {
+export const HighlightedRichText = ({ blok, isLoading }: HighlightedRichTextProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && !isLoading) {
 
       const text = new SplitType(ref.current, {
         types: ['words', 'chars']
@@ -78,11 +79,17 @@ export const HighlightedRichText = ({ blok }: HighlightedRichTextProps) => {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       };
     }
-  }, []);
+  }, [isLoading]);
 
-  return (
-    <section {...storyblokEditable(blok)} className={styles.section}>
-      <RichText blok={{ content: { richtextField: blok.text } }} ref={ref} />
-    </section>
-  );
+  if (isLoading) {
+    return null
+  }
+  else {
+    return (
+      <section {...storyblokEditable(blok)} className={styles.section}>
+        <RichText blok={{ content: { richtextField: blok.text } }} ref={ref} />
+      </section>
+    );
+  }
+
 };

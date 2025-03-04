@@ -16,8 +16,6 @@ interface CursorImagesTrailProps {
 }
 
 export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) => {
-  console.log("CursorImagesTrail component rendering with blok:", blok);
-
   const container = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLImageElement[]>([]);
 

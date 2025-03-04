@@ -1,6 +1,6 @@
 "use client";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
-import { Page } from "@/components/Page";
+import { Page } from "@/components/Page/Page";
 import { Hero } from "@/components/Hero/Hero";
 import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
 import ThemeProvider from "./ThemeProvider";

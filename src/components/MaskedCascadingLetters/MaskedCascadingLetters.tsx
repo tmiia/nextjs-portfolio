@@ -6,10 +6,11 @@ import SplitType from 'split-type'
 import gsap from 'gsap';
 
 interface MaskedCascadingLettersProps {
-  children : any
+  children : any,
+  play: boolean
 }
 
-export const MaskedCascadingLetters = ({ children }: MaskedCascadingLettersProps) => {
+export const MaskedCascadingLetters = ({ children, play }: MaskedCascadingLettersProps) => {
 
   const ref = useRef<HTMLElement>(null);
   const refclone1 = useRef<HTMLElement>(null);
@@ -18,32 +19,37 @@ export const MaskedCascadingLetters = ({ children }: MaskedCascadingLettersProps
   const refclone4 = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const elements = [refclone1.current, refclone2.current, refclone3.current, refclone4.current]
+    if (play) {
+      const elements = [refclone1.current, refclone2.current, refclone3.current, refclone4.current]
 
-    elements.forEach((el, i) => {
-      const text = new SplitType(el as HTMLElement, { types: 'chars' });
-      const chars = text.chars;
+      gsap.set(elements, {opacity: 1});
 
-        if (chars) {
-          chars.forEach(char => {
-            char.classList.add(`reveal-${i}`);
-          });
+      elements.forEach((el, i) => {
+        const text = new SplitType(el as HTMLElement, { types: 'chars' });
+        const chars = text.chars;
 
-          gsap.fromTo(
-            `.reveal-${i}`,
-            { y: i === 0 ? 150 : ((i + 1) * 150)},
-            {
-              y: -((elements.length * 150) - ((i + 1) * 150)),
-              duration: 2.3,
-              stagger: -0.1,
-              ease: 'power4.inOut',
-              delay: i === 0 ? 0 : -0.015,
-            }
-          );
-        }
+          if (chars) {
+            chars.forEach(char => {
+              char.classList.add(`reveal-${i}`);
+            });
 
-    });
-  }, []);
+
+            gsap.fromTo(
+              `.reveal-${i}`,
+              { y: i === 0 ? 150 : ((i + 1) * 150)},
+              {
+                y: -((elements.length * 150) - ((i + 1) * 150)),
+                duration: 2.3,
+                stagger: -0.1,
+                ease: 'power4.inOut',
+                delay: i === 0 ? 0 : -0.015,
+              }
+            );
+          }
+
+      });
+    }
+  }, [play]);
 
   return (
     <div className={styles.masked}>

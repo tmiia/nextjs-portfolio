@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import "./globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import StoryblokProvider from "../components/providers/StoryblokProvider";
-import { Page } from "@/components/Page";
+import { Page } from "@/components/Page/Page";
 import { Hero } from "@/components/Hero/Hero";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import { CursorImagesTrail } from "@/components/CursorImagesTrail/CursorImagesTrail";
