@@ -2,6 +2,7 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { Page } from "@/components/Page";
 import { Hero } from "@/components/Hero/Hero";
+import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
 import ThemeProvider from "./ThemeProvider";
 
 storyblokInit({
@@ -9,7 +10,8 @@ storyblokInit({
   use: [apiPlugin],
   components: {
     page: Page,
-    hero: Hero
+    hero: Hero,
+    cursorImagesTrail: CursorImagesTrail
   }
 });
 

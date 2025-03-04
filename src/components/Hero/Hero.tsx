@@ -3,12 +3,15 @@ import { storyblokEditable } from "@storyblok/react";
 import styles from './Hero.module.scss'
 import { MaskedCascadingLetters } from "../MaskedCascadingLetters/MaskedCascadingLetters";
 import { FadingReveal } from "../FadingReveal/FadingReveal";
+import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
+import { useRef } from "react";
 
 interface HeroProps {
   blok: {
     name?: string;
     highlightedTitle?: string;
-    wantedJob?: string;
+    highlightedSubtitle?: string;
+    overview?: string;
     [key: string]: any;
   };
 }
@@ -20,8 +23,10 @@ export const Hero = ({ blok }: HeroProps) => {
     return <div>Hero component error: No data received</div>;
   }
 
+  const ref = useRef<HTMLElement>(null)
+
   return (
-    <header {...storyblokEditable(blok)} className={`grid-container ${styles.hero}`}>
+    <header {...storyblokEditable(blok)} className={`grid-container ${styles.hero}`} ref={ref}>
       <div className={styles.heroTitles}>
           <MaskedCascadingLetters>
             <h1 className={styles.title}>{blok.highlightedTitle}</h1>
@@ -33,6 +38,8 @@ export const Hero = ({ blok }: HeroProps) => {
       <FadingReveal delay={2} duration={1}>
         <p className={styles.heroOverview}>{blok.overview}</p>
       </FadingReveal>
+
+      <CursorImagesTrail blok={blok.cursorAnim} cursorArea={ref || null} />
     </header>
   );
 };
