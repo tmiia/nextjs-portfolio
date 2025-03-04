@@ -83,7 +83,6 @@ export const HighlightedRichText = ({ blok }: HighlightedRichTextProps) => {
   return (
     <section {...storyblokEditable(blok)} className={styles.section}>
       <RichText blok={{ content: { richtextField: blok.text } }} ref={ref} />
-      <div style={{height:'100vh'}}></div>
     </section>
   );
 };
