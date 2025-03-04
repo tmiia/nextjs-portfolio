@@ -25,9 +25,9 @@ export const Circle = ({ height = 16, width = 16, color = '#ffffff', isFill, pla
         {
           scale: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.3,
           ease: 'expo.inOut',
-          delay: 1.5
+          delay: 1.45
         }
       )
     }
