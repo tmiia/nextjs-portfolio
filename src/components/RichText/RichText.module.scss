@@ -2,11 +2,18 @@
   height: fit-content;
 
   img {
-    height: 5.5rem;
-    width: 13rem;
-    border-radius: 4rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.5rem;
     object-fit: cover;
     transition: 0.3s ease-in-out;
-    margin: 0 1rem;
+    margin: 0 0.25rem;
+
+    @media screen and (min-width: 780px) {
+      height: 5.5rem;
+      width: 13rem;
+      border-radius: 4rem;
+      margin: 0 1rem;
+    }
   }
 }

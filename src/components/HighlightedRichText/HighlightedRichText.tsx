@@ -61,7 +61,7 @@ export const HighlightedRichText = ({ blok, isLoading }: HighlightedRichTextProp
         gsap.set(imagesRef.current, { width: 0 });
 
         gsap.to(imagesRef.current, {
-          width: '13rem',
+          width: 'revert-layer',
           stagger: 0.5,
           duration: 0.3,
           ease: "power2.out",
