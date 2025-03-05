@@ -9,7 +9,7 @@
 
   .colsContainer {
     flex: 1;
-    
+
     .grainyCol {
       border-radius: 0.5rem;
       background-color: #ffffff47;
@@ -19,12 +19,12 @@
       background-size: fill;
       background-repeat: repeat;
 
-      .lg {
-        display: none;
+    }
+    .lg {
+      display: none;
 
-        @media screen and (min-width: 780px) {
-          display: block;
-        }
+      @media screen and (min-width: 780px) {
+        display: block;
       }
     }
   }
