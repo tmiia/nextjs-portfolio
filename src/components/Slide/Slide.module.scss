@@ -1,0 +1,17 @@
+.slide {
+  grid-column: span 2;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background-color: #5b5b5b;
+
+  height: 90vh;
+  padding: 1rem;
+
+  @media screen and (min-width: 780px) {
+    grid-column: span 4;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+
+    padding: 2rem;
+  }
+}

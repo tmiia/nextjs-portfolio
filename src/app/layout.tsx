@@ -7,7 +7,7 @@ import { Page } from "@/components/Page/Page";
 import { Hero } from "@/components/Hero/Hero";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import { CursorImagesTrail } from "@/components/CursorImagesTrail/CursorImagesTrail";
-import { HighlightedRichText } from "@/components/HighlightedRichText/highlightedRichText";
+import { HighlightedRichText } from "@/components/HighlightedRichText/HighlightedRichText";
 import { RichText } from "@/components/RichText/RichText";
 import { SlideFolder } from "@/components/SlideFolder/SlideFolder";
 
