@@ -1,7 +1,15 @@
-.trailImage {
-  position: absolute;
-  width: 150px;
-  scale: 0;
-  top: 0;
-  left: 0;
+.cursorImagesTrail {
+  display: none;
+
+  @media screen and (min-width: 780px) {
+    display: contents;
+
+    .trailImage {
+      position: absolute;
+      width: 150px;
+      scale: 0;
+      top: 0;
+      left: 0;
+    }
+  }
 }
