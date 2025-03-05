@@ -8,12 +8,9 @@
   height: 100vh;
 
   .colsContainer {
-    display: flex;
     flex: 1;
-    gap: 1px;
-
+    
     .grainyCol {
-      flex: 1;
       border-radius: 0.5rem;
       background-color: #ffffff47;
       backdrop-filter: blur(16px);
@@ -21,6 +18,14 @@
       background-image: url('/noises/noise-light.png');
       background-size: fill;
       background-repeat: repeat;
+
+      .lg {
+        display: none;
+
+        @media screen and (min-width: 780px) {
+          display: block;
+        }
+      }
     }
   }
 }

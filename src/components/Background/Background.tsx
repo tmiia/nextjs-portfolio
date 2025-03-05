@@ -12,14 +12,14 @@ const Background: FC<Props> = ({ columns = 4 }: Props) => {
   return (
     <div className={styles.backgroundContainer}>
       <BackgroundCanvas />
-      <div className={styles.colsContainer}>
+      <div className={`grid-container ${styles.colsContainer}`}>
         {Array.from({ length: columns }).map((_, index) => (
-          <div key={index} className={styles.grainyCol} />
+          <div key={index} className={`${index % 2 === 0 ? 'lg' : ''} ${styles.grainyCol}`} />
         ))}
       </div>
-      <div className={styles.colsContainer}>
+      <div className={`grid-container ${styles.colsContainer}`}>
         {Array.from({ length: columns }).map((_, index) => (
-          <div key={index} className={styles.grainyCol} />
+          <div key={index} className={`${index % 2 === 0 ? 'lg' : ''} ${styles.grainyCol}`} />
         ))}
       </div>
     </div>

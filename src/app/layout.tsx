@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
-import "./globals.css";
+import "./globals.scss";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import StoryblokProvider from "../components/providers/StoryblokProvider";
 import { Page } from "@/components/Page/Page";
