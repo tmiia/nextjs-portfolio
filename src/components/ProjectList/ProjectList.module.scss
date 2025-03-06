@@ -1,15 +1,22 @@
 .list {
   width: fit-content;
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+
+  @media screen and (min-width: 780px) {
+    list-style: none;
+    
+    li + li {
+      margin-top: 1rem;
+    }
+  }
 }
 
 .center {
   @media screen and (min-width: 780px) {
+    text-align: center;
     margin: 0 auto;
-  }
-}
-
-.left {
-  @media screen and (min-width: 780px) {
-    list-style: none;
   }
 }

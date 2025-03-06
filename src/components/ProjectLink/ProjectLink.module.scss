@@ -8,6 +8,10 @@
   color: var(--text-color);
   text-decoration: none;
 
+  @media screen and (min-width: 780px) {
+    font-size: 2rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -26,6 +30,7 @@
   }
 
   .image{
+    z-index: 50;
     position: absolute;
     top: -50%;
     left: 0;
