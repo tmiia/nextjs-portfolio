@@ -1,20 +1,17 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
 import styles from './Slide.module.scss'
-import { Key, useRef } from "react";
-import Background from "../Background/Background";
+import { useRef } from "react";
 import { Circle } from "../svgs/circle";
-import { ProjectLink } from "../ProjectLink/ProjectLink";
-
-// type Project = {
-//   list: Array<{
-//     label: string,
-//     link: object
-//   }>
-// }
+import { ProjectList } from "../ProjectList/ProjectList";
 
 export type SlideType = {
-  projects: any[],
+  projects: Array<{
+    component: string;
+    list: Array<any>;
+    _uid: string;
+    _editable?: string;
+  }>,
   subTitle: string,
   subtitle2: string,
   title: string,
@@ -26,11 +23,10 @@ interface SlideProps {
 }
 
 export const Slide = ({ blok }: SlideProps) => {
-
   const ref = useRef<HTMLElement>(null)
 
   return (
-    <article className={`js-slide ${styles.slide}`} ref={ref}>
+    <article {...storyblokEditable(blok)} className={`js-slide ${styles.slide}`} ref={ref}>
       <div className={`grid-container ${styles.background}`}>
         {Array.from({ length: 2 }).map((_, index) => (
           <div key={index} className={`${index % 2 === 0 ? `${styles.lg}` : ''} ${styles.grainyCol}`} />
@@ -44,9 +40,10 @@ export const Slide = ({ blok }: SlideProps) => {
           <p className={styles.subtitle}>{blok.subTitle}</p>
           <p className={styles.subtitle}>{blok.subtitle2}</p>
         </header>
-        <ul style={{margin:'0 auto'}}>
-          <li><ProjectLink blok={blok.projects[0].list[0]} /></li>
-        </ul>
+
+        {blok.projects && blok.projects.length > 0 && blok.projects[0].list && (
+          <ProjectList blok={blok.projects[0]} />
+        )}
       </div>
     </article>
   );

@@ -5,16 +5,19 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export type ProjectLinkType = {
-  label: string,
+  component: string;
+  label: string;
   link: {
-    id?: string,
-    url: string,
-    target?: string
-  },
+    id?: string;
+    url: string;
+    target?: string;
+  };
   media: {
     filename: string;
     [key: string]: any;
-  }
+  };
+  _uid: string;
+  _editable?: string;
   [key: string]: any;
 }
 
@@ -28,13 +31,13 @@ export const ProjectLink = ({ blok }: ProjectLinkProps) => {
 
   useEffect(() => {
     if (ref.current) {
-
       const mouseMove = (e: any) => {
         const { clientX, clientY } = e;
-        const { width, height, top, left } : any = ref.current?.getBoundingClientRect();
+        const { width, height, top, left } = ref.current?.getBoundingClientRect() || {};
+        if (!left || !top) return;
 
         const x = clientX - left;
-        const y = clientY - (top + (height / 2));
+        const y = clientY - (top + (height ?? 0 / 2));
 
         gsap.to(imgRef.current, {x: x, y: y, scale: 1})
       }
@@ -45,17 +48,26 @@ export const ProjectLink = ({ blok }: ProjectLinkProps) => {
 
       ref.current.addEventListener('mousemove', mouseMove)
       ref.current.addEventListener('mouseleave', mouseLeave)
-      return () => {
 
+      return () => {
+        ref.current?.removeEventListener('mousemove', mouseMove);
+        ref.current?.removeEventListener('mouseleave', mouseLeave);
       };
     }
   }, []);
 
   return (
     <a
-      {...storyblokEditable(blok)} className={styles.link} ref={ref} href={blok.link?.url} target={blok.link?.target}>
+      {...storyblokEditable(blok)}
+      className={styles.link}
+      ref={ref}
+      href={blok.link?.url}
+      target={blok.link?.target}
+    >
       {blok.label}
-      <img src={blok.media.filename} className={styles.image} ref={imgRef} />
+      {blok.media?.filename && (
+        <img src={blok.media.filename} className={styles.image} ref={imgRef} alt={blok.media.alt || ''} />
+      )}
     </a>
   );
 };
