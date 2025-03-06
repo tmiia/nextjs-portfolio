@@ -86,7 +86,7 @@ export const HighlightedRichText = ({ blok, isLoading }: HighlightedRichTextProp
   }
   else {
     return (
-      <section {...storyblokEditable(blok)} className={styles.section}>
+      <section {...storyblokEditable(blok)} className={`js-highlightedRichtext ${styles.section}`}>
         <RichText blok={{ content: { richtextField: blok.text } }} ref={ref} />
       </section>
     );
