@@ -4,7 +4,7 @@ import styles from './Slide.module.scss'
 import { Key, useRef } from "react";
 import Background from "../Background/Background";
 import { Circle } from "../svgs/circle";
-import { ProjectLink } from "../Hero/ProjectLink/ProjectLink";
+import { ProjectLink } from "../ProjectLink/ProjectLink";
 
 // type Project = {
 //   list: Array<{
