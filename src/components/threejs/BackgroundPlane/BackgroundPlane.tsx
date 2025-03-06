@@ -127,61 +127,61 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
   });
 
   // DEBUG
-  useEffect(() => {
-    const gui = new GUI({ width: 300 })
+  // useEffect(() => {
+  //   const gui = new GUI({ width: 300 })
 
-    gui.add(guiValues, 'uWavesElevation', 0, 1, 0.001).name('Waves Elevation').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uWavesElevation.value = value;
-      }
-    });
+  //   gui.add(guiValues, 'uWavesElevation', 0, 1, 0.001).name('Waves Elevation').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uWavesElevation.value = value;
+  //     }
+  //   });
 
-    gui.add(guiValues.uWavesFrequency, 'x', 0, 10, 0.001).name('Waves Frequency x').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uWavesFrequency.value.x = value;
-      }
-    });
+  //   gui.add(guiValues.uWavesFrequency, 'x', 0, 10, 0.001).name('Waves Frequency x').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uWavesFrequency.value.x = value;
+  //     }
+  //   });
 
-    gui.add(guiValues.uWavesFrequency, 'y', 0, 10, 0.001).name('Waves Frequency y').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uWavesFrequency.value.y = value;
-      }
-    });
+  //   gui.add(guiValues.uWavesFrequency, 'y', 0, 10, 0.001).name('Waves Frequency y').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uWavesFrequency.value.y = value;
+  //     }
+  //   });
 
-    gui.add(guiValues, 'uWavesSpeed', 0, 4, 0.001).name('Waves Speed').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uWavesSpeed.value = value;
-      }
-    });
+  //   gui.add(guiValues, 'uWavesSpeed', 0, 4, 0.001).name('Waves Speed').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uWavesSpeed.value = value;
+  //     }
+  //   });
 
-    gui.addColor(guiValues, 'uColor1').name('Color 1').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uColor1.value = new Color(value);
-      }
-    });
+  //   gui.addColor(guiValues, 'uColor1').name('Color 1').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uColor1.value = new Color(value);
+  //     }
+  //   });
 
-    gui.addColor(guiValues, 'uColor2').name('Color 2').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uColor2.value = new Color(value);
-      }
-    });
+  //   gui.addColor(guiValues, 'uColor2').name('Color 2').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uColor2.value = new Color(value);
+  //     }
+  //   });
 
-    gui.add(guiValues, 'uColorOffset', 0, 1, 0.001).name('Color Offset').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uColorOffset.value = value;
-      }
-    });
+  //   gui.add(guiValues, 'uColorOffset', 0, 1, 0.001).name('Color Offset').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uColorOffset.value = value;
+  //     }
+  //   });
 
-    gui.add(guiValues, 'uColorMultiplier', 0, 10, 0.001).name('Color Multiplier').onChange((value) => {
-      if (shaderMaterial.uniforms) {
-        shaderMaterial.uniforms.uColorMultiplier.value = value;
-      }
-    });
+  //   gui.add(guiValues, 'uColorMultiplier', 0, 10, 0.001).name('Color Multiplier').onChange((value) => {
+  //     if (shaderMaterial.uniforms) {
+  //       shaderMaterial.uniforms.uColorMultiplier.value = value;
+  //     }
+  //   });
 
-    return () => {
-      gui.destroy();
-    };
-  }, [shaderMaterial]);
+  //   return () => {
+  //     gui.destroy();
+  //   };
+  // }, [shaderMaterial]);
 
   return (
     <mesh
