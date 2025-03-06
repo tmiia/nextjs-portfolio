@@ -36,8 +36,10 @@ export const Slide = ({ blok }: SlideProps) => {
 
       <div className={styles.content}>
         <header className={`grid-container ${styles.header}`}>
-          <h3 className={styles.title}>{blok.title}</h3>
-          <Circle className={styles.circle} width={24} height={24} isFill={Math.random() > 0.5}  />
+          <div className={styles.titleContainer}>
+            <h3 className={styles.title}>{blok.title}</h3>
+            <Circle className={styles.circle} width={24} height={24} isFill={Math.random() > 0.5}  />
+          </div>
           <p className={styles.subtitle}>{blok.subTitle}</p>
           <p className={styles.subtitle}>{blok.subtitle2}</p>
         </header>
