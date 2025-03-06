@@ -1,17 +1,86 @@
 .slide {
+  position: relative;
   grid-column: span 2;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  background-color: #5b5b5b;
-
   height: 90vh;
-  padding: 1rem;
+  overflow: hidden;
+
+  -webkit-box-shadow: 0px -2px 34px -7px rgb(5, 5, 5);
+  -moz-box-shadow: 0px -2px 34px -7px rgb(5, 5, 5);
+  box-shadow: 0px -2px 34px -7px rgb(5, 5, 5);
+
+
+  background-color: #0d0d12;
+  border-top: 1.5rem solid #5EDB57;
+
+  .background {
+    flex: 1;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    .grainyCol {
+      border-radius: 0.5rem;
+      background-color: #c1c1c126;
+      backdrop-filter: blur(16px);
+      opacity: 0.15;
+      background-image: url('/noises/noise-light.png');
+      background-size: fill;
+      background-repeat: repeat;
+      grid-column: span 2;
+
+    }
+    .lg {
+      display: none;
+
+      @media screen and (min-width: 780px) {
+        display: block;
+      }
+    }
+  }
+
+
+  .content {
+    position: absolute;
+    inset: 0;
+    font-family: var(--font-thunder);
+    padding: 2rem;
+
+    .header {
+      grid-template-rows: repeat(2, 1fr);
+      row-gap: 1rem;
+      margin-bottom: 2rem;
+
+      .title {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        font-size: 4rem;
+      }
+
+      .subtitle {
+        grid-row: 2 / 3;
+        grid-column: 4 / 5;
+
+        width: 70%;
+        font-weight: 100;
+        font-size: 1.15rem;
+
+        &:first-of-type {
+          grid-column: 3 / 4;
+        }
+      }
+
+      .circle {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        align-self: end;
+      }
+    }
+  }
 
   @media screen and (min-width: 780px) {
     grid-column: span 4;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-
-    padding: 2rem;
   }
 }
