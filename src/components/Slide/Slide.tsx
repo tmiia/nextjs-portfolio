@@ -8,6 +8,7 @@ import { ProjectList } from "../ProjectList/ProjectList";
 export type SlideType = {
   projects: Array<{
     component: string;
+    isCenter: boolean;
     list: Array<any>;
     _uid: string;
     _editable?: string;

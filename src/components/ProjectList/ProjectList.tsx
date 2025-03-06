@@ -6,6 +6,7 @@ import { ProjectLink } from "../ProjectLink/ProjectLink";
 
 export type ProjectListType = {
   component: string;
+  isCenter: boolean,
   list: Array<{
     component: string;
     label: string;
@@ -35,7 +36,7 @@ export const ProjectList = ({ blok }: ProjectListProps) => {
   const ref = useRef<HTMLUListElement>(null)
 
   return (
-    <ul {...storyblokEditable(blok)} className={styles.list} ref={ref}>
+    <ul {...storyblokEditable(blok)} className={`${styles.list} ${blok.isCenter ? styles.center : styles.left}`} ref={ref}>
       {blok.list && blok.list.map((item, index) => (
         <li key={item._uid || index}>
           <ProjectLink blok={item} />
