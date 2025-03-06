@@ -10,6 +10,7 @@ import { CursorImagesTrail } from "@/components/CursorImagesTrail/CursorImagesTr
 import { HighlightedRichText } from "@/components/HighlightedRichText/HighlightedRichText";
 import { RichText } from "@/components/RichText/RichText";
 import { SlideFolder } from "@/components/SlideFolder/SlideFolder";
+import { Footer } from "@/components/Footer/Footer";
 
 const Thunder = localFont({
   src: '../../public/fonts/Thunder-VF.ttf',
@@ -39,7 +40,8 @@ storyblokInit({
     cursorImagesTrail: CursorImagesTrail,
     richText: RichText,
     highlightedRichText: HighlightedRichText,
-    slideFolder: SlideFolder
+    slideFolder: SlideFolder,
+    footer: Footer
   }
 });
 

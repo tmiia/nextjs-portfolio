@@ -7,6 +7,7 @@ import ThemeProvider from "./ThemeProvider";
 import { HighlightedRichText } from "../HighlightedRichText/HighlightedRichText";
 import { RichText } from "../RichText/RichText";
 import { SlideFolder } from "../SlideFolder/SlideFolder";
+import { Footer } from "../Footer/Footer";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -17,7 +18,8 @@ storyblokInit({
     cursorImagesTrail: CursorImagesTrail,
     richText: RichText,
     highlightedRichText: HighlightedRichText,
-    slideFolder: SlideFolder
+    slideFolder: SlideFolder,
+    footer: Footer
   }
 });
 
