@@ -1,0 +1,35 @@
+.link {
+  position: relative;
+  padding: 1rem 3rem 1rem 0;
+
+  font-size: 1.25rem;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: var(--text-color);
+  text-decoration: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0;
+    width: calc(100% - 3rem);
+    height: 1px;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transition: .4s ease-in-out;
+    transform-origin: left;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+  .image{
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 150px;
+    scale: 0;
+  }
+}

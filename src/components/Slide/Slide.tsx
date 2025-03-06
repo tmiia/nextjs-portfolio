@@ -4,10 +4,19 @@ import styles from './Slide.module.scss'
 import { Key, useRef } from "react";
 import Background from "../Background/Background";
 import { Circle } from "../svgs/circle";
+import { ProjectLink } from "../Hero/ProjectLink/ProjectLink";
+
+// type Project = {
+//   list: Array<{
+//     label: string,
+//     link: object
+//   }>
+// }
 
 export type SlideType = {
-  projects: object,
+  projects: any[],
   subTitle: string,
+  subtitle2: string,
   title: string,
   [key: string]: any;
 }
@@ -21,7 +30,7 @@ export const Slide = ({ blok }: SlideProps) => {
   const ref = useRef<HTMLElement>(null)
 
   return (
-    <article {...storyblokEditable(blok)} className={`js-slide ${styles.slide}`} ref={ref}>
+    <article className={`js-slide ${styles.slide}`} ref={ref}>
       <div className={`grid-container ${styles.background}`}>
         {Array.from({ length: 2 }).map((_, index) => (
           <div key={index} className={`${index % 2 === 0 ? `${styles.lg}` : ''} ${styles.grainyCol}`} />
@@ -35,8 +44,8 @@ export const Slide = ({ blok }: SlideProps) => {
           <p className={styles.subtitle}>{blok.subTitle}</p>
           <p className={styles.subtitle}>{blok.subtitle2}</p>
         </header>
-        <ul>
-          <li>list item</li>
+        <ul style={{margin:'0 auto'}}>
+          <li><ProjectLink blok={blok.projects[0].list[0]} /></li>
         </ul>
       </div>
     </article>
