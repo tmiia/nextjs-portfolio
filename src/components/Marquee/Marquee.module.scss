@@ -1,0 +1,17 @@
+.marquee {
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  grid-column: span 4;
+  width: fit-content;
+
+  .text {
+    margin: 0;
+
+    &:nth-of-type(2) {
+      position: absolute;
+      left: 100%;
+    }
+  }
+
+}

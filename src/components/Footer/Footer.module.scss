@@ -1,3 +1,25 @@
 .footer {
-  min-height: 100vh;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  .marquee {
+    position: absolute;
+    bottom: 0;
+
+    .marqueeText{
+      font-size: 25rem;
+      font-weight: 600;
+      font-family: var(--font-thunder);
+      grid-column: span 4;
+      line-height: 0%;
+      text-transform: uppercase;
+
+      &::first-letter {
+        font-family: var(--font-dirtyline);
+        font-weight: 500;
+      }
+    }
+  }
+
 }
