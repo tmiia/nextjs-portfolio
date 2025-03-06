@@ -3,9 +3,13 @@
 }
 
 .center {
-  margin: 0 auto;
+  @media screen and (min-width: 780px) {
+    margin: 0 auto;
+  }
 }
 
 .left {
-  list-style: none;
+  @media screen and (min-width: 780px) {
+    list-style: none;
+  }
 }
