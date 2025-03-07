@@ -1,11 +1,11 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
-import styles from './ProjectList.module.scss'
+import styles from './SocialList.module.scss'
 import { useRef } from "react";
 import { ProjectLink } from "../ProjectLink/ProjectLink";
 import { Link } from "../Link/Link";
 
-export type ProjectListType = {
+export type SocialListType = {
   links: Array<{
     component: string;
     label: string;
@@ -19,11 +19,11 @@ export type ProjectListType = {
   [key: string]: any;
 }
 
-interface ProjectListProps {
-  blok: ProjectListType
+interface SocialListProps {
+  blok: SocialListType
 }
 
-export const ProjectList = ({ blok }: ProjectListProps) => {
+export const SocialList = ({ blok }: SocialListProps) => {
   const ref = useRef<HTMLUListElement>(null)
 
   return (
