@@ -20,14 +20,15 @@ export type SocialListType = {
 }
 
 interface SocialListProps {
-  blok: SocialListType
+  blok: SocialListType,
+  className?: string
 }
 
-export const SocialList = ({ blok }: SocialListProps) => {
+export const SocialList = ({ blok, className }: SocialListProps) => {
   const ref = useRef<HTMLUListElement>(null)
 
   return (
-    <ul {...storyblokEditable(blok)} className={styles.list} ref={ref}>
+    <ul className={`${styles.list} ${className}`} ref={ref}>
       {blok.links && blok.links.map((item, index) => (
         <li key={item._uid || index}>
           <Link blok={item} />

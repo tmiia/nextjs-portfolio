@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Background from "../Background/Background";
 import { Marquee } from "../Marquee/Marquee";
 import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
+import { SocialList } from "../SocialList/SocialList";
 
 interface FooterProps {
   blok: {
@@ -32,6 +33,8 @@ export const Footer = ({ blok, isLoading }: FooterProps) => {
           <p className={styles.job}>{blok.jobInfo}</p>
           <p className={styles.school}>{blok.schoolInfo}</p>
         </div>
+
+        <SocialList blok={blok.socialInfo[0]} className={styles.socialList} />
       </footer>
     );
   }
