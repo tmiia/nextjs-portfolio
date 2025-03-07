@@ -3,6 +3,7 @@ import { storyblokEditable } from "@storyblok/react";
 import styles from './ProjectLink.module.scss'
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "../Link/Link";
 
 export type ProjectLinkType = {
   component: string;
@@ -57,17 +58,11 @@ export const ProjectLink = ({ blok }: ProjectLinkProps) => {
   }, []);
 
   return (
-    <a
-      {...storyblokEditable(blok)}
-      className={styles.link}
-      ref={ref}
-      href={blok.link?.url}
-      target={blok.link?.target}
-    >
-      {blok.label}
+    <figcaption className={styles.linkContainer}>
+      <Link blok={blok} ref={ref} className={styles.link} />
       {blok.media?.filename && (
         <img src={blok.media.filename} className={styles.image} ref={imgRef} alt={blok.media.alt || ''} />
       )}
-    </a>
+    </figcaption>
   );
 };

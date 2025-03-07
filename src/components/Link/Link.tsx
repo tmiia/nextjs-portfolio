@@ -16,11 +16,11 @@ export type LinkType = {
 
 interface LinkProps {
   blok: LinkType,
-  className: string
+  className?: string,
+  ref?: any
 }
 
-export const Link = ({ blok, className }: LinkProps) => {
-  const ref = useRef<HTMLAnchorElement>(null)
+export const Link = ({ blok, className, ref }: LinkProps) => {
 
   return (
     <a
