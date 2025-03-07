@@ -30,15 +30,24 @@
     margin-top: calc(25rem / 2);
 
     .job, .school {
-      max-width: 20%;
+      max-width: 45%;
       font-family: var(--font-thunder);
       font-weight: 100;
       letter-spacing: 3px;
+      line-height: 1.25rem;
     }
 
     .school {
       margin-left: auto;
       text-align: right;
+    }
+
+
+    @media screen and (min-width: 780px) {
+      .job, .school {
+        max-width: 20%;
+        line-height: 1rem;
+      }
     }
   }
 
