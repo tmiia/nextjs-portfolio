@@ -2,13 +2,16 @@
 
 import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { extend, useFrame, useThree } from '@react-three/fiber';
-import { Mesh, ShaderMaterial, Color, GLSL3, Vector2 } from 'three';
+import { Mesh, ShaderMaterial, Color, GLSL3, Vector2, ColorRepresentation } from 'three';
 import { GUI } from 'dat.gui';
 import { useTheme } from 'next-themes'
 
 import vertexShader from './Shader/vertex.glsl'
 import fragmentShader from './Shader/fragment.glsl'
 import fragmentPerlinShader from './Shader/perlin_noise_fragment.glsl'
+
+import lavaFragmentShader from './Shader/Lavalamp/fragment.glsl';
+import lavaVertexShader from './Shader/Lavalamp/vertex.glsl';
 
 const lerpColor = (color1 :any, color2: any, factor: any) => {
   const result = new Color();
@@ -48,8 +51,28 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
   const color1Obj = useMemo(() => new Color(color1), [color1, theme]);
   const color2Obj = useMemo(() => new Color(color2), [color2, theme]);
 
-  const [lightThemeColor] = useState(new Color(color1));
-  const [darkThemeColor] = useState(new Color(color2));
+  const darkColorsArray = useMemo(() => {
+    return [
+      new Color('#00FFBF'),
+      new Color('#363643'),
+      new Color('#0A1128'),
+      new Color('#11214F'),
+      new Color('#030818')
+    ];
+  }, []);
+
+  const lightColorsArray = useMemo(() => {
+    return [
+      new Color('#00FFBF'),
+      new Color('#E3FBFF'),
+      new Color('#F3F6FF'),
+      new Color('#B4C5F6'),
+      new Color('#EEF2FE')
+    ];
+  }, []);
+
+  const [lightThemeColor] = useState(lightColorsArray);
+  const [darkThemeColor] = useState(darkColorsArray);
 
   const [transitionFactor, setTransitionFactor] = useState(theme === 'dark' ? 0 : 1);
 
@@ -58,29 +81,30 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
     [theme, darkThemeColor, lightThemeColor]
   );
 
-  const [guiValues] = useState({
-    uWavesElevation: 0.2,
-    uWavesFrequency: new Vector2(4, 1.5),
-    uWavesSpeed: 0.75,
-    uColor1: color1,
-    uColor2: color2,
-    uColorOffset: 0.08,
-    uColorMultiplier: 5,
-  });
+  // const [guiValues] = useState({
+  //   uWavesElevation: 0.2,
+  //   uWavesFrequency: new Vector2(4, 1.5),
+  //   uWavesSpeed: 0.75,
+  //   uColor1: color1,
+  //   uColor2: color2,
+  //   uColorOffset: 0.08,
+  //   uColorMultiplier: 5,
+  // });
 
   const shaderMaterial = useMemo(() => {
     return new ShaderMaterial({
-      vertexShader: vertexShader,
-      fragmentShader: fragmentPerlinShader,
+      vertexShader: lavaVertexShader,
+      fragmentShader: lavaFragmentShader,
       uniforms: {
         uTime: { value: 0 },
-        uWavesElevation: { value: guiValues.uWavesElevation },
-        uWavesFrequency: { value: guiValues.uWavesFrequency },
-        uWavesSpeed: { value: guiValues.uWavesSpeed },
+        // uWavesElevation: { value: guiValues.uWavesElevation },
+        // uWavesFrequency: { value: guiValues.uWavesFrequency },
+        // uWavesSpeed: { value: guiValues.uWavesSpeed },
         uColor1: { value: color1Obj },
         uColor2: { value: color2Obj },
-        uColorOffset: { value: guiValues.uColorOffset },
-        uColorMultiplier: { value: guiValues.uColorMultiplier },
+        uColor: { value: targetColor },
+        // uColorOffset: { value: guiValues.uColorOffset },
+        // uColorMultiplier: { value: guiValues.uColorMultiplier },
         uResolution: {
           value: new Vector2(
             window.innerWidth,
@@ -90,7 +114,7 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
         uThemeTransition: { value: theme === 'dark' ? 0 : 1 },
       }
     });
-  }, [color1Obj, color2Obj, guiValues]);
+  }, [color1Obj, color2Obj, darkColorsArray, targetColor]);
 
   useFrame((state, delta) => {
     if (shaderMaterial.uniforms) {
@@ -125,63 +149,6 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
       }
     }
   });
-
-  // DEBUG
-  // useEffect(() => {
-  //   const gui = new GUI({ width: 300 })
-
-  //   gui.add(guiValues, 'uWavesElevation', 0, 1, 0.001).name('Waves Elevation').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uWavesElevation.value = value;
-  //     }
-  //   });
-
-  //   gui.add(guiValues.uWavesFrequency, 'x', 0, 10, 0.001).name('Waves Frequency x').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uWavesFrequency.value.x = value;
-  //     }
-  //   });
-
-  //   gui.add(guiValues.uWavesFrequency, 'y', 0, 10, 0.001).name('Waves Frequency y').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uWavesFrequency.value.y = value;
-  //     }
-  //   });
-
-  //   gui.add(guiValues, 'uWavesSpeed', 0, 4, 0.001).name('Waves Speed').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uWavesSpeed.value = value;
-  //     }
-  //   });
-
-  //   gui.addColor(guiValues, 'uColor1').name('Color 1').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uColor1.value = new Color(value);
-  //     }
-  //   });
-
-  //   gui.addColor(guiValues, 'uColor2').name('Color 2').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uColor2.value = new Color(value);
-  //     }
-  //   });
-
-  //   gui.add(guiValues, 'uColorOffset', 0, 1, 0.001).name('Color Offset').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uColorOffset.value = value;
-  //     }
-  //   });
-
-  //   gui.add(guiValues, 'uColorMultiplier', 0, 10, 0.001).name('Color Multiplier').onChange((value) => {
-  //     if (shaderMaterial.uniforms) {
-  //       shaderMaterial.uniforms.uColorMultiplier.value = value;
-  //     }
-  //   });
-
-  //   return () => {
-  //     gui.destroy();
-  //   };
-  // }, [shaderMaterial]);
 
   return (
     <mesh

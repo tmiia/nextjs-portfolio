@@ -21,7 +21,7 @@ export const Page = ({ blok }: PageProps) => {
   useEffect(() => {
     gsap.to(loadingRef.current, {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.6,
       ease: 'expo.Out',
       delay: 2,
       onComplete: () => {
