@@ -37,8 +37,8 @@ export const ProjectLink = ({ blok }: ProjectLinkProps) => {
         const { width, height, top, left } = ref.current?.getBoundingClientRect() || {};
         if (!left || !top) return;
 
-        const x = clientX - left;
-        const y = clientY - (top + (height ?? 0 / 2));
+        const x = clientX + 50;
+        const y = clientY - (top);
 
         gsap.to(imgRef.current, {x: x, y: y, scale: 1})
       }

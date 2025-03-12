@@ -34,7 +34,7 @@ export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) 
             y: clientY,
             zIndex: imagesRef.current.length - i,
             scale: 1 + i * 0.01,
-            borderRadius: 0,
+            borderRadius: 4,
             opacity: 1 - i * 0.2,
             duration: 0.5,
             ease: "power2.out",

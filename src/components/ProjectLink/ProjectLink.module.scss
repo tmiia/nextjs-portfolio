@@ -18,7 +18,10 @@
     position: absolute;
     top: -50%;
     left: 0;
-    width: 150px;
+    width: 300px;
     scale: 0;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.5rem;
   }
 }
