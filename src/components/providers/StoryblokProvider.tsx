@@ -8,6 +8,7 @@ import { HighlightedRichText } from "../HighlightedRichText/HighlightedRichText"
 import { RichText } from "../RichText/RichText";
 import { SlideFolder } from "../SlideFolder/SlideFolder";
 import { Footer } from "../Footer/Footer";
+import { StickySect } from "../StickySect/StickySect";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
@@ -16,6 +17,7 @@ storyblokInit({
     page: Page,
     hero: Hero,
     cursorImagesTrail: CursorImagesTrail,
+    stickySect: StickySect,
     richText: RichText,
     highlightedRichText: HighlightedRichText,
     slideFolder: SlideFolder,
