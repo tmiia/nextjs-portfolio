@@ -1,10 +1,17 @@
 .linkContainer {
   position: relative;
   padding: 0.25rem 3rem 0.25rem 0;
+  cursor: pointer;
 
   .link {
     font-size: 1.25rem;
     font-weight: 100;
+  }
+
+  .linkHover {
+    &::before {
+      transform: scaleX(1);
+    }
   }
 
   @media screen and (min-width: 780px) {

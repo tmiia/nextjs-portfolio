@@ -3,7 +3,6 @@ import { StoryblokComponent } from "@storyblok/react";
 import { storyblokEditable } from "@storyblok/react";
 import Background from "../Background/Background";
 import { useEffect, useRef, useState } from "react";
-import Lenis from "lenis";
 import styles from "./Page.module.scss"
 import gsap from "gsap";
 
@@ -28,15 +27,6 @@ export const Page = ({ blok }: PageProps) => {
         setLoading(false)
       }
     });
-  }, []);
-
-  useEffect(() => {
-    const lenis = new Lenis();
-    const raf = (time: any) => {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
   }, []);
 
   return (
