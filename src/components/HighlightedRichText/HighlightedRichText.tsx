@@ -1,6 +1,6 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
-import styles from './highlightedRichText.module.scss'
+import styles from './HighlightedRichText.module.scss'
 import { RichText } from "../RichText/RichText";
 import { useRef, useEffect } from "react";
 import SplitType from "split-type";
