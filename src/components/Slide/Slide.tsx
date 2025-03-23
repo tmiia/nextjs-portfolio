@@ -2,7 +2,7 @@
 import { storyblokEditable } from "@storyblok/react";
 import styles from './Slide.module.scss'
 import { useEffect, useRef } from "react";
-import { Circle } from "../svgs/circle";
+import { Circle } from "../svgs/Circle/circle";
 import { ProjectList } from "../ProjectList/ProjectList";
 
 export type SlideType = {

@@ -12,10 +12,9 @@
 
     .grainyCol {
       border-radius: 0.5rem;
-      // background-color: #4c4c4c47;
-      background-color: #e8e8e847;
+      background-color: var(--grain-primary);
       backdrop-filter: blur(16px);
-      opacity: 0.35;
+      opacity: var(--grain);
       background-image: url('/noises/noise-light.png');
       background-size: fill;
       background-repeat: repeat;

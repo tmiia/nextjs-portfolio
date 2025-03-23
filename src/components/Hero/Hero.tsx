@@ -5,7 +5,7 @@ import { MaskedCascadingLetters } from "../MaskedCascadingLetters/MaskedCascadin
 import { FadingReveal } from "../FadingReveal/FadingReveal";
 import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
 import { useEffect, useRef, useState } from "react";
-import { Circle } from "../svgs/circle";
+import { Circle } from "../svgs/Circle/circle";
 
 interface HeroProps {
   blok: {

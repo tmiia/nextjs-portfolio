@@ -38,7 +38,7 @@
     .title, .subtitle {
       text-transform: uppercase;
       color: var(--title-color);
-      transition: color 1.5s ease-in-out;
+      transition: color .3s ease-in-out;
     }
 
     .bottom {
@@ -62,7 +62,7 @@
     font-family: var(--font-thunder);
     font-weight: 100;
     letter-spacing: 1.5px;
-    transition: color 1.5s ease-in;
+    transition: color .3s ease-in;
 
     @media screen and (min-width: 780px) {
       grid-column: 4 / 5;
