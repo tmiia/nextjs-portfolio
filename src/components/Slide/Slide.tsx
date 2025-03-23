@@ -1,7 +1,7 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
 import styles from './Slide.module.scss'
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Circle } from "../svgs/circle";
 import { ProjectList } from "../ProjectList/ProjectList";
 
@@ -20,11 +20,18 @@ export type SlideType = {
 }
 
 interface SlideProps {
-  blok: SlideType
+  blok: SlideType,
+  index: number
 }
 
-export const Slide = ({ blok }: SlideProps) => {
+export const Slide = ({ blok, index }: SlideProps) => {
   const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.top = `${index * 110}px`;
+    }
+  }, [index]);
 
   return (
     <article {...storyblokEditable(blok)} className={`js-slide ${styles.slide}`} ref={ref}>
