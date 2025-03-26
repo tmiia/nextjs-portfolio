@@ -1,16 +1,16 @@
 "use client";
 import React, { RefObject } from "react";
-import { richTextResolver } from "@storyblok/richtext";
+import { richTextResolver, StoryblokRichTextNode } from "@storyblok/richtext";
 import { storyblokEditable } from "@storyblok/react";
 import styles from './RichText.module.scss'
 
 interface RichTextProps {
   blok: {
     content: {
-      richtextField: any;
+      richtextField: StoryblokRichTextNode;
     };
   },
-  ref: RefObject<HTMLDivElement | null>
+  ref?: RefObject<HTMLDivElement>
 }
 
 export const RichText = ({ blok, ref }: RichTextProps) => {
@@ -18,5 +18,13 @@ export const RichText = ({ blok, ref }: RichTextProps) => {
 
   const { render } = richTextResolver();
   const html = render(blok.content.richtextField) as string;
-  return <div {...storyblokEditable(blok)} dangerouslySetInnerHTML={{ __html: html }} className={styles.container} ref={ref} />;
+
+  return (
+    <div
+      {...storyblokEditable(blok)}
+      dangerouslySetInnerHTML={{ __html: html }}
+      className={styles.container}
+      ref={ref}
+    />
+  );
 };
