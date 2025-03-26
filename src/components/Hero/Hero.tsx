@@ -3,7 +3,7 @@ import { storyblokEditable } from "@storyblok/react";
 import styles from './Hero.module.scss'
 import { MaskedCascadingLetters } from "../MaskedCascadingLetters/MaskedCascadingLetters";
 import { FadingReveal } from "../FadingReveal/FadingReveal";
-import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
+import { CursorImagesTrail, type CursorImagesTraiMediaType } from "../CursorImagesTrail/CursorImagesTrail";
 import { useEffect, useRef, useState } from "react";
 import { Circle } from "../svgs/Circle/circle";
 
@@ -13,14 +13,13 @@ interface HeroProps {
     highlightedTitle?: string;
     highlightedSubtitle?: string;
     overview?: string;
-    [key: string]: any;
-  },
+    cursorAnim: CursorImagesTraiMediaType[];
+  };
   isLoading?: boolean;
 }
 
-export const Hero = ({ blok, isLoading }: HeroProps) => {
-
-  const [loadingPulse, setLoadingPulse] = useState(0);
+export const Hero = ({ blok, isLoading = false }: HeroProps) => {
+  const [loadingPulse, setLoadingPulse] = useState<number>(0);
 
   useEffect(() => {
     if (isLoading) {
@@ -32,31 +31,62 @@ export const Hero = ({ blok, isLoading }: HeroProps) => {
     }
   }, [isLoading]);
 
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLElement>(null);
 
   return (
-    <header {...storyblokEditable(blok)} className={`grid-container ${styles.hero}`} ref={ref}>
-      <div className={styles.heroTitles} style={{zIndex: isLoading ? 1500 : 1}}>
-          <MaskedCascadingLetters play={!isLoading}>
-            <h1 className={styles.title}>{blok.highlightedTitle}</h1>
-          </MaskedCascadingLetters>
+    <header
+      {...storyblokEditable(blok)}
+      className={`grid-container ${styles.hero}`}
+      ref={ref}
+    >
+      <div
+        className={styles.heroTitles}
+        style={{zIndex: isLoading ? 1500 : 1}}
+      >
+        <MaskedCascadingLetters play={!isLoading}>
+          <h1 className={styles.title}>
+            {blok.highlightedTitle || ''}
+          </h1>
+        </MaskedCascadingLetters>
 
-          <div className={styles.bottom}>
-            <div className={styles.circleContainer}>
-              <Circle height={24} width={24} isFill={loadingPulse === 0 ? true : false } play={!isLoading} />
-              <Circle height={24} width={24} isFill={loadingPulse === 1 ? true : false } play={!isLoading} />
-              <Circle height={24} width={24} isFill={loadingPulse === 2 ? true : false } play={!isLoading} />
-            </div>
-            <FadingReveal play={!isLoading} delay={0.8} duration={2.1}>
-              <h3 className={styles.subtitle}>{blok.highlightedSubtitle}</h3>
-            </FadingReveal>
+        <div className={styles.bottom}>
+          <div className={styles.circleContainer}>
+            <Circle
+              height={24}
+              width={24}
+              isFill={loadingPulse === 0}
+              play={!isLoading}
+            />
+            <Circle
+              height={24}
+              width={24}
+              isFill={loadingPulse === 1}
+              play={!isLoading}
+            />
+            <Circle
+              height={24}
+              width={24}
+              isFill={loadingPulse === 2}
+              play={!isLoading}
+            />
           </div>
+          <FadingReveal play={!isLoading} delay={0.8} duration={2.1}>
+            <h3 className={styles.subtitle}>
+              {blok.highlightedSubtitle || ''}
+            </h3>
+          </FadingReveal>
+        </div>
       </div>
       <FadingReveal play={!isLoading} delay={0.9} duration={1}>
-        <p className={styles.heroOverview}>{blok.overview}</p>
+        <p className={styles.heroOverview}>
+          {blok.overview || ''}
+        </p>
       </FadingReveal>
 
-      <CursorImagesTrail blok={blok.cursorAnim} cursorArea={ref || null} />
+      <CursorImagesTrail
+        blok={blok.cursorAnim}
+        cursorArea={ref ?? null}
+      />
     </header>
   );
 };

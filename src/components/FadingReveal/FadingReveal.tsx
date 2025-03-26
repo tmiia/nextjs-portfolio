@@ -3,7 +3,7 @@ import { useEffect, useRef, ReactElement, cloneElement } from 'react';
 import gsap from 'gsap';
 import styles from './FadingReveal.module.scss';
 
-interface FadingRevealProps {
+export interface FadingRevealProps {
   children: ReactElement;
   duration?: number;
   delay?: number;
