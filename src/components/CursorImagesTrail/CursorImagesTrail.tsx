@@ -1,31 +1,37 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
-import styles from './CursorImagesTrail.module.scss'
-import { Key, RefObject, useEffect, useRef, useState } from "react";
+import styles from './CursorImagesTrail.module.scss';
+import { RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from "next/image";
+
+interface Media {
+  filename: string;
+  alt?: string;
+  [key: string]: any;
+}
 
 interface CursorImagesTrailProps {
   blok: {
-    media: {
-      filename: string;
-      [key: string]: any;
-    }[];
+    media?: Media[];
     [key: string]: any;
   };
-  cursorArea : RefObject<HTMLElement | null>
+  cursorArea: RefObject<HTMLElement | null>;
 }
 
 export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) => {
-  const container = useRef<HTMLDivElement>(null)
+  const container = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
-
 
   useEffect(() => {
     if (container.current && cursorArea.current) {
-      imagesRef.current = Array.from(container.current.querySelectorAll(`.${styles.trailImage}`));
+      imagesRef.current = Array.from(
+        container.current.querySelectorAll(`.${styles.trailImage}`)
+      ) as HTMLImageElement[];
+
       let idleTimer: NodeJS.Timeout | null = null;
 
-      const mouseMove = (e: { clientX: number; clientY: number; }) => {
+      const mouseMove = (e: MouseEvent) => {
         const { clientX, clientY } = e;
 
         imagesRef.current.forEach((img, i) => {
@@ -44,7 +50,7 @@ export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) 
 
         if (idleTimer) clearTimeout(idleTimer);
         idleTimer = setTimeout(mouseLeave, 300);
-      }
+      };
 
       const mouseLeave = () => {
         imagesRef.current.forEach((img, i) => {
@@ -56,25 +62,36 @@ export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) 
             delay: i * 0.05,
           });
         });
-      }
+      };
 
-      cursorArea.current.addEventListener('mousemove', mouseMove)
-      cursorArea.current.addEventListener('mouseleave', mouseLeave)
+      cursorArea.current.addEventListener('mousemove', mouseMove);
+      cursorArea.current.addEventListener('mouseleave', mouseLeave);
 
       return () => {
-        cursorArea.current?.removeEventListener('mousemove', mouseMove)
-        cursorArea.current?.addEventListener('mouseleave', mouseLeave)
+        cursorArea.current?.removeEventListener('mousemove', mouseMove);
+        cursorArea.current?.removeEventListener('mouseleave', mouseLeave);
         if (idleTimer) clearTimeout(idleTimer);
-
-      }
+      };
     }
-  }, []);
+  }, [cursorArea]);
+
+  const mediaItems = blok[0].media || [];
+
+  console.log(blok);
 
 
   return (
     <div {...storyblokEditable(blok)} className={styles.cursorImagesTrail} ref={container}>
-      {blok[0].media.map((m: { filename: string | undefined; }, index: Key | null | undefined) => (
-        <img key={index} src={m.filename} alt="" className={styles.trailImage} />
+      {mediaItems.map((m: Media, index: number) => (
+        <Image
+          key={index}
+          src={m.filename || ''}
+          alt={m.alt || ''}
+          className={styles.trailImage}
+          width={200}
+          height={112.5}
+          priority={false}
+        />
       ))}
     </div>
   );

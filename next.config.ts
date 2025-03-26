@@ -3,6 +3,18 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   transpilePackages: ['three'],
 
+  images: {
+    domains: [
+      'a.storyblok.com',
+    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'a.storyblok.com',
+      },
+    ],
+  },
+
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
