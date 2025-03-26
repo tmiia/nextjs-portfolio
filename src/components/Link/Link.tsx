@@ -1,7 +1,7 @@
 "use client";
+import { forwardRef } from "react";
 import { storyblokEditable } from "@storyblok/react";
-import styles from './Link.module.scss'
-import { useRef } from "react";
+import styles from "./Link.module.scss";
 
 export type LinkType = {
   component: string;
@@ -12,25 +12,27 @@ export type LinkType = {
     target?: string;
   };
   [key: string]: any;
-}
+};
 
 interface LinkProps {
-  blok: LinkType,
-  className?: string,
-  ref?: any
+  blok: LinkType;
+  className?: string;
 }
 
-export const Link = ({ blok, className, ref }: LinkProps) => {
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ blok, className }, ref) => {
+    return (
+      <a
+        {...storyblokEditable(blok)}
+        className={`${styles.link} ${className || ""}`}
+        ref={ref}
+        href={blok.link?.url}
+        target={blok.link?.target}
+      >
+        {blok.label}
+      </a>
+    );
+  }
+);
 
-  return (
-    <a
-      {...storyblokEditable(blok)}
-      className={`${styles.link} ${className}`}
-      ref={ref}
-      href={blok.link?.url}
-      target={blok.link?.target}
-    >
-      {blok.label}
-    </a>
-  );
-};
+Link.displayName = "Link";
