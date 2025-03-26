@@ -4,40 +4,16 @@ import styles from './Footer.module.scss'
 import { useRef } from "react";
 import Background from "../Background/Background";
 import { Marquee } from "../Marquee/Marquee";
-import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
-import { SocialList } from "../SocialList/SocialList";
-
-interface CursorAnimItem {
-  component: string;
-  media: Array<{
-    id: number;
-    filename: string;
-    alt: string;
-  }>;
-}
-
-interface SocialInfoItem {
-  component: string;
-  label: string;
-  links: Array<{
-    component: string;
-    label: string;
-    link: {
-      id?: string;
-      url: string;
-      target?: string;
-    };
-  }>;
-}
-
+import { CursorImagesTrail, type CursorImagesTraiMediaType } from "../CursorImagesTrail/CursorImagesTrail";
+import { SocialList, type SocialListType } from "../SocialList/SocialList";
 interface FooterProps {
   blok: {
     component: string;
     marquee: string;
     jobInfo: string;
     schoolInfo: string;
-    cursorAnim: CursorAnimItem[];
-    socialInfo: SocialInfoItem[];
+    cursorAnim: CursorImagesTraiMediaType[];
+    socialInfo: SocialListType[];
   };
   isLoading?: boolean;
 }

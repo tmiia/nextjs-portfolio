@@ -5,7 +5,8 @@ import { RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 
-interface Media {
+export interface CursorImagesTraiMediaType {
+  id: number;
   filename: string;
   alt?: string;
   [key: string]: any;
@@ -13,7 +14,7 @@ interface Media {
 
 interface CursorImagesTrailProps {
   blok: {
-    media?: Media[];
+    media?: CursorImagesTraiMediaType[];
     [key: string]: any;
   };
   cursorArea: RefObject<HTMLElement | null>;
@@ -79,7 +80,7 @@ export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) 
 
   return (
     <div {...storyblokEditable(blok)} className={styles.cursorImagesTrail} ref={container}>
-      {mediaItems.map((m: Media, index: number) => (
+      {mediaItems.map((m: CursorImagesTraiMediaType, index: number) => (
         <Image
           key={index}
           src={m.filename || ''}
