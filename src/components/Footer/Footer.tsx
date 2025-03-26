@@ -7,11 +7,38 @@ import { Marquee } from "../Marquee/Marquee";
 import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
 import { SocialList } from "../SocialList/SocialList";
 
+interface CursorAnimItem {
+  component: string;
+  media: Array<{
+    id: number;
+    filename: string;
+    alt: string;
+  }>;
+}
+
+interface SocialInfoItem {
+  component: string;
+  label: string;
+  links: Array<{
+    component: string;
+    label: string;
+    link: {
+      id?: string;
+      url: string;
+      target?: string;
+    };
+  }>;
+}
+
 interface FooterProps {
   blok: {
+    component: string;
     marquee: string;
-    [key: string]: any;
-  },
+    jobInfo: string;
+    schoolInfo: string;
+    cursorAnim: CursorAnimItem[];
+    socialInfo: SocialInfoItem[];
+  };
   isLoading?: boolean;
 }
 
@@ -34,7 +61,9 @@ export const Footer = ({ blok, isLoading }: FooterProps) => {
           <p className={styles.school}>{blok.schoolInfo}</p>
         </div>
 
-        <SocialList blok={blok.socialInfo[0]} className={styles.socialList} />
+        {blok.socialInfo && blok.socialInfo.length > 0 && (
+          <SocialList blok={blok.socialInfo[0]} className={styles.socialList} />
+        )}
       </footer>
     );
   }
