@@ -77,9 +77,6 @@ export const CursorImagesTrail = ({ blok, cursorArea }: CursorImagesTrailProps) 
 
   const mediaItems = blok[0].media || [];
 
-  console.log(blok);
-
-
   return (
     <div {...storyblokEditable(blok)} className={styles.cursorImagesTrail} ref={container}>
       {mediaItems.map((m: Media, index: number) => (
