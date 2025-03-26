@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from 'react';
+import { ReactElement, useEffect, useRef } from 'react';
 import React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,12 +7,13 @@ import styles from './Marquee.module.scss'
 
 
 interface MarqueeProps {
-  children : any,
-  speed? : number,
-  play?: boolean,
-  className?: string,
-  container: any
+  children: ReactElement<any>
+  speed?: number;
+  play?: boolean;
+  className?: string;
+  container: string | HTMLElement;
 }
+
 
 export const Marquee = ({ children, speed = 0.07, play = true, className, container }: MarqueeProps) => {
   const marquee = useRef<HTMLDivElement>(null);
