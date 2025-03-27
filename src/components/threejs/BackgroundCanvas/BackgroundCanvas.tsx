@@ -9,7 +9,7 @@ import BackgroundPlane from "../BackgroundPlane/BackgroundPlane"
 
 type Props = {}
 
-const BackgroundCanvas : FC<Props> = ({} : Props) => {
+const BackgroundCanvas : FC<Props> = () => {
   return (
     <Canvas gl={{alpha: false, antialias: false}} className={styles.canvas}>
       <PerspectiveCamera makeDefault={true} position={[0, 0, 5]} />
