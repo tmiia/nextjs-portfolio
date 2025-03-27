@@ -2,29 +2,12 @@
 import { storyblokEditable } from "@storyblok/react";
 import styles from './ProjectList.module.scss'
 import { useRef } from "react";
-import { ProjectLink } from "../ProjectLink/ProjectLink";
+import { ProjectLink, type ProjectLinkType } from "../ProjectLink/ProjectLink";
 
 export type ProjectListType = {
   component: string;
   isCenter: boolean,
-  list: Array<{
-    component: string;
-    label: string;
-    link: {
-      id?: string;
-      url: string;
-      target?: string;
-    };
-    media: {
-      filename: string;
-      [key: string]: any;
-    };
-    _uid: string;
-    _editable?: string;
-    [key: string]: any;
-  }>;
-  _uid: string;
-  _editable?: string;
+  list: ProjectLinkType[]
   [key: string]: any;
 }
 

@@ -1,8 +1,6 @@
 "use client";
-import { storyblokEditable } from "@storyblok/react";
 import styles from './SocialList.module.scss'
 import { useRef } from "react";
-import { ProjectLink } from "../ProjectLink/ProjectLink";
 import { Link } from "../Link/Link";
 
 export type SocialListType = {

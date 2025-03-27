@@ -1,14 +1,14 @@
 "use client";
 import { storyblokEditable } from "@storyblok/react";
 import styles from './SlideFolder.module.scss'
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Slide, type SlideType } from "../Slide/Slide";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface SlideFolderProps {
+export interface SlideFolderProps {
   blok: {
     slides: SlideType[];
     [key: string]: any;

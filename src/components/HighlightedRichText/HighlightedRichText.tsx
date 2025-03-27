@@ -10,7 +10,7 @@ import { StoryblokRichTextNode } from "@storyblok/richtext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface HighlightedRichTextProps {
+export interface HighlightedRichTextProps {
   blok: {
     richtextField?: StoryblokRichTextNode<string>;
     [key: string]: any;

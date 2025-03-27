@@ -17,8 +17,6 @@ export type ProjectLinkType = {
     filename: string;
     [key: string]: any;
   };
-  _uid: string;
-  _editable?: string;
   [key: string]: any;
 }
 

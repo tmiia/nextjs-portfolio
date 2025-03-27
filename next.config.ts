@@ -4,9 +4,6 @@ const nextConfig: NextConfig = {
   transpilePackages: ['three'],
 
   images: {
-    domains: [
-      'a.storyblok.com',
-    ],
     remotePatterns: [
       {
         protocol: 'https',

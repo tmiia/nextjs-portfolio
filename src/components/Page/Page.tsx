@@ -3,7 +3,6 @@ import { StoryblokComponent } from "@storyblok/react";
 import { storyblokEditable } from "@storyblok/react";
 import Background from "../Background/Background";
 import { useEffect, useRef, useState } from "react";
-import styles from "./Page.module.scss"
 import gsap from "gsap";
 
 interface PageProps {

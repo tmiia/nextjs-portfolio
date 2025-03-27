@@ -7,9 +7,13 @@ import { SlideFolder } from "../SlideFolder/SlideFolder";
 
 interface StickySectProps {
   blok: {
-    marquee: string;
+    component: string;
+    container: Array<{
+      component: string;
+      [key: string]: any;
+    }>;
     [key: string]: any;
-  },
+  };
   isLoading?: boolean;
 }
 
@@ -18,15 +22,19 @@ export const StickySect = ({ blok, isLoading }: StickySectProps) => {
 
   console.log(blok);
 
-
   if (isLoading) {
     return null
-  } else {
-    return (
-      <section {...storyblokEditable(blok)} className={`${styles.section}`} ref={ref}>
-        <HighlightedRichText blok={blok.container[0]} isLoading={isLoading ? true : false} />
-        <SlideFolder blok={blok.container[1]} />
-      </section>
-    );
   }
+
+  return (
+    <section {...storyblokEditable(blok)} className={`${styles.section}`} ref={ref}>
+      {blok.container[0] && blok.container[0].component === 'highlightedRichText' && (
+        <HighlightedRichText blok={{ richtextField: blok.container[0].text?.[0], ...blok.container[0] }} isLoading={false} />
+      )}
+
+      {blok.container[1] && blok.container[1].component === 'slideFolder' && (
+        <SlideFolder blok={{ slides: blok.container[1].slides, ...blok.container[1] }} isLoading={false} />
+      )}
+    </section>
+  );
 };
