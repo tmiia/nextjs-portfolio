@@ -1,6 +1,6 @@
 'use client'
 
-import { OrbitControls, OrthographicCamera, PerspectiveCamera } from "@react-three/drei"
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import React, { type FC } from 'react'
 

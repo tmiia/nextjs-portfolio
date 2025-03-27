@@ -1,14 +1,14 @@
 'use client'
 
-import React, { useRef, useMemo, useEffect, useState } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import { extend, useFrame, useThree } from '@react-three/fiber';
-import { Mesh, ShaderMaterial, Color, GLSL3, Vector2, ColorRepresentation } from 'three';
-import { GUI } from 'dat.gui';
+import { Mesh, ShaderMaterial, Color, Vector2 } from 'three';
+// import { GUI } from 'dat.gui';
 import { useTheme } from 'next-themes'
 
-import vertexShader from './Shader/vertex.glsl'
-import fragmentShader from './Shader/fragment.glsl'
-import fragmentPerlinShader from './Shader/perlin_noise_fragment.glsl'
+// import vertexShader from './Shader/vertex.glsl'
+// import fragmentShader from './Shader/fragment.glsl'
+// import fragmentPerlinShader from './Shader/perlin_noise_fragment.glsl'
 
 import lavaFragmentShader from './Shader/Lavalamp/fragment.glsl';
 import lavaVertexShader from './Shader/Lavalamp/vertex.glsl';
