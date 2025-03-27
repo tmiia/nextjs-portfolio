@@ -26,9 +26,11 @@ export const Footer = ({ blok, isLoading }: FooterProps) => {
   } else {
     return (
       <footer {...storyblokEditable(blok)} className={`grid-container ${styles.footer}`} ref={ref}>
-        <Marquee className={styles.marquee} container={ref.current}>
-          <strong className={styles.marqueeText}>{blok.marquee}</strong>
-        </Marquee>
+        {ref.current && (
+          <Marquee className={styles.marquee} container={ref.current}>
+            <strong className={styles.marqueeText}>{blok.marquee}</strong>
+          </Marquee>
+        )}
 
         <CursorImagesTrail blok={blok.cursorAnim} cursorArea={ref || null} />
 
