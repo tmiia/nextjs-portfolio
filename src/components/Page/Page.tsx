@@ -4,6 +4,7 @@ import { storyblokEditable } from "@storyblok/react";
 import Background from "../Background/Background";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { LoaderSect } from "../LoaderSect/LoaderSect";
 
 interface PageProps {
   blok: {
@@ -18,9 +19,6 @@ export const Page = ({ blok }: PageProps) => {
 
   useEffect(() => {
     gsap.to(loadingRef.current, {
-      opacity: 0,
-      duration: 0.6,
-      ease: 'expo.Out',
       delay: 2,
       onComplete: () => {
         setLoading(false)
@@ -30,14 +28,10 @@ export const Page = ({ blok }: PageProps) => {
 
   return (
     <main {...storyblokEditable(blok)}>
-      <Background />
-      {loading && (
-        <div ref={loadingRef} style={{zIndex: 900, position: 'fixed', inset: 0, width:'100%', height:'100%', backgroundColor:'var(--background-color)'}} />
-      )}
+      <Background isLoading={loading} />
       {blok.body?.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} isLoading={loading}  />
       ))}
     </main>
-
   );
 };

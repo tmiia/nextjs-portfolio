@@ -9,17 +9,24 @@
 
   .colsContainer {
     flex: 1;
+    transition: all .5s ease-out;
 
     .grainyCol {
       border-radius: 0.5rem;
-      background-color: var(--grain-primary);
+      background-color: black;
       backdrop-filter: blur(16px);
       opacity: var(--grain);
+      transition: all .5s ease-out;
+    }
+
+    .withNoise {
       background-image: url('/noises/noise-light.png');
+      background-color: var(--grain-primary);
       background-size: fill;
       background-repeat: repeat;
-
+      transition: all .5s ease-out;
     }
+
     .lg {
       display: none;
 
