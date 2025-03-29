@@ -4,7 +4,6 @@ import { storyblokEditable } from "@storyblok/react";
 import Background from "../Background/Background";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { LoaderSect } from "../LoaderSect/LoaderSect";
 
 interface PageProps {
   blok: {
