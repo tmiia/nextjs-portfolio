@@ -11,7 +11,7 @@ interface MarqueeProps {
   speed?: number;
   play?: boolean;
   className?: string;
-  container: string | HTMLElement;
+  container: HTMLElement | null;
 }
 
 
@@ -55,6 +55,9 @@ export const Marquee = ({ children, speed = 0.07, play = true, className, contai
     xPercent += speed * direction
     requestAnimationFrame(animation)
   }
+
+  console.log(children);
+
 
   return (
     <div className={`${styles.marquee} ${className}`} ref={marquee}>
