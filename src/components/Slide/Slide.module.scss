@@ -52,7 +52,7 @@
     .header {
       grid-template-rows: repeat(3);
       row-gap: 1rem;
-      margin-bottom: 4rem;
+      margin-bottom: 2.5rem;
 
       .titleContainer {
         display: flex;
@@ -68,13 +68,17 @@
       }
 
       .title {
-        font-size: 4rem;
+        font-size: 2.5rem;
         font-weight: 600;
         color: var(--title-color);
 
         &::first-letter {
           font-family: var(--font-dirtyline);
           font-weight: 500;
+        }
+
+        @media screen and (min-width: 780px) {
+          font-size: 4rem;
         }
       }
 
@@ -84,9 +88,9 @@
 
         width: 70%;
         font-weight: 100;
-        font-size: 1.15rem;
-        letter-spacing: 2px;
-        line-height: 1.25rem;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        line-height: 0.95rem;
 
         &:first-of-type {
           grid-row: 2 / 3;
@@ -94,6 +98,10 @@
         }
 
         @media screen and (min-width: 780px) {
+          font-size: 1.15rem;
+          letter-spacing: 2px;
+          line-height: 1.25rem;
+
           grid-row: 2 / 3;
           grid-column: 4 / 5;
 
@@ -106,6 +114,7 @@
       }
 
       @media screen and (min-width: 780px) {
+        margin-bottom: 4rem;
         grid-template-rows: repeat(2, 1fr);
       }
     }
