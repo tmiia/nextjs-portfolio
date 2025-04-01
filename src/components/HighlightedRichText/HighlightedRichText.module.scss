@@ -13,7 +13,19 @@
   padding: 0 1rem;
   min-height: 100vh;
 
-  @media screen and (min-width: 780px) {
+  @media screen and (min-width: 580px) {
+    font-size: 4rem;
+    font-weight: 600;
+    padding: 0 1.5rem;
+  }
+
+  @media screen and (min-width: 1050px) {
+    font-size: 5rem;
+    font-weight: 600;
+    padding: 0 1.5rem;
+  }
+
+  @media screen and (min-width: 1200px) {
     font-size: 7rem;
     font-weight: 600;
     padding: 0 2rem;

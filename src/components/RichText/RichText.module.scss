@@ -10,7 +10,21 @@
     transition: 0.3s ease-in-out;
     margin: 0 0.25rem;
 
+    @media screen and (min-width: 580px) {
+      height: 3.5rem;
+      width: 6rem;
+      border-radius: 4rem;
+      margin: 0 1rem;
+    }
+
     @media screen and (min-width: 780px) {
+      height: 3.5rem;
+      width: 9rem;
+      border-radius: 4rem;
+      margin: 0 1rem;
+    }
+
+    @media screen and (min-width: 1200px) {
       height: 5.5rem;
       width: 13rem;
       border-radius: 4rem;
