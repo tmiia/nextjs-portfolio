@@ -4,7 +4,7 @@ const fetchHomeData = async () => {
   const storyblokApi = getStoryblokApi();
   try {
     const response = await storyblokApi.get('cdn/stories/home', {
-      version: 'draft'
+      version: 'published'
     });
     return response;
   } catch (error) {
@@ -18,13 +18,10 @@ const Home = async () => {
     const { data } = await fetchHomeData();
 
     return (
-      <div className="container mx-auto">
         <StoryblokStory story={data.story} />
-      </div>
     );
   } catch (error : any) {
     console.error("Error in Home component:", error);
-    return <div className="p-8 bg-red-100">Error loading content: {error.message || 'Unknown error'}</div>;
   }
 }
 
