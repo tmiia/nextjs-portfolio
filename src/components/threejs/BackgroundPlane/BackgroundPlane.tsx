@@ -1,19 +1,14 @@
 'use client'
 
-import React, { useRef, useMemo, useState } from 'react';
-import { extend, useFrame, useThree } from '@react-three/fiber';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
+import { useFrame, useThree } from '@react-three/fiber';
 import { Mesh, ShaderMaterial, Color, Vector2 } from 'three';
-// import { GUI } from 'dat.gui';
 import { useTheme } from 'next-themes'
-
-// import vertexShader from './Shader/vertex.glsl'
-// import fragmentShader from './Shader/fragment.glsl'
-// import fragmentPerlinShader from './Shader/perlin_noise_fragment.glsl'
 
 import lavaFragmentShader from './Shader/Lavalamp/fragment.glsl';
 import lavaVertexShader from './Shader/Lavalamp/vertex.glsl';
 
-const lerpColor = (color1 :any, color2: any, factor: any) => {
+const lerpColor = (color1: Color, color2: Color, factor: number): Color => {
   const result = new Color();
   result.r = color1.r + (color2.r - color1.r) * factor;
   result.g = color1.g + (color2.g - color1.g) * factor;
@@ -37,59 +32,40 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
   rotation = [0, 0, 0],
   color1 = '#fafaff',
   color2 = '#363643',
-  // color3 = '#00FFBF', // Green
   width = 2,
   height = 2,
   widthSegments = 150,
   heightSegments = 150,
 }) => {
   const meshRef = useRef<Mesh>(null);
-  const materialRef = useRef<ShaderMaterial>(null);
   const viewport = useThree(state => state.viewport);
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
-  const color1Obj = useMemo(() => new Color(color1), [color1, theme]);
-  const color2Obj = useMemo(() => new Color(color2), [color2, theme]);
+  const darkThemeColors = useMemo(() => [
+    new Color('#00FFBF'),
+    new Color('#363643'),
+    new Color('#0A1128'),
+    new Color('#11214F'),
+    new Color('#030818')
+  ], []);
 
-  const darkColorsArray = useMemo(() => {
-    return [
-      new Color('#00FFBF'),
-      new Color('#363643'),
-      new Color('#0A1128'),
-      new Color('#11214F'),
-      new Color('#030818')
-    ];
-  }, []);
+  const lightThemeColors = useMemo(() => [
+    new Color('#00FFBF'),
+    new Color('#E3FBFF'),
+    new Color('#F3F6FF'),
+    new Color('#B4C5F6'),
+    new Color('#EEF2FE')
+  ], []);
 
-  const lightColorsArray = useMemo(() => {
-    return [
-      new Color('#00FFBF'),
-      new Color('#E3FBFF'),
-      new Color('#F3F6FF'),
-      new Color('#B4C5F6'),
-      new Color('#EEF2FE')
-    ];
-  }, []);
-
-  const [lightThemeColor] = useState(lightColorsArray);
-  const [darkThemeColor] = useState(darkColorsArray);
+  const color1Obj = useMemo(() => new Color(color1), [color1]);
+  const color2Obj = useMemo(() => new Color(color2), [color2]);
 
   const [transitionFactor, setTransitionFactor] = useState(theme === 'dark' ? 0 : 1);
 
   const targetColor = useMemo(() =>
-    theme === 'dark' ? darkThemeColor : lightThemeColor,
-    [theme, darkThemeColor, lightThemeColor]
+    theme === 'dark' ? darkThemeColors : lightThemeColors,
+    [theme, darkThemeColors, lightThemeColors]
   );
-
-  // const [guiValues] = useState({
-  //   uWavesElevation: 0.2,
-  //   uWavesFrequency: new Vector2(4, 1.5),
-  //   uWavesSpeed: 0.75,
-  //   uColor1: color1,
-  //   uColor2: color2,
-  //   uColorOffset: 0.08,
-  //   uColorMultiplier: 5,
-  // });
 
   const shaderMaterial = useMemo(() => {
     return new ShaderMaterial({
@@ -97,51 +73,52 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
       fragmentShader: lavaFragmentShader,
       uniforms: {
         uTime: { value: 0 },
-        // uWavesElevation: { value: guiValues.uWavesElevation },
-        // uWavesFrequency: { value: guiValues.uWavesFrequency },
-        // uWavesSpeed: { value: guiValues.uWavesSpeed },
         uColor1: { value: color1Obj },
         uColor2: { value: color2Obj },
         uColor: { value: targetColor },
-        // uColorOffset: { value: guiValues.uColorOffset },
-        // uColorMultiplier: { value: guiValues.uColorMultiplier },
         uResolution: {
-          value: new Vector2(
-            window.innerWidth,
-            window.innerHeight
-          )
+          value: new Vector2(window.innerWidth, window.innerHeight)
         },
         uThemeTransition: { value: theme === 'dark' ? 0 : 1 },
       }
     });
-  }, [color1Obj, color2Obj, darkColorsArray, targetColor]);
+  }, [color1Obj, color2Obj, targetColor, theme]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (shaderMaterial.uniforms) {
+        shaderMaterial.uniforms.uResolution.value.set(
+          window.innerWidth,
+          window.innerHeight
+        );
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [shaderMaterial.uniforms]);
+
 
   useFrame((state, delta) => {
     if (shaderMaterial.uniforms) {
-      shaderMaterial.uniforms.uTime.value += delta;
-    }
-  });
 
-  useFrame((state, delta) => {
-    if (shaderMaterial.uniforms) {
       shaderMaterial.uniforms.uTime.value += delta;
 
-      const currentFactor = transitionFactor;
       const targetFactor = theme === 'dark' ? 0 : 1;
 
-      if (Math.abs(currentFactor - targetFactor) > 0.001) {
-        const transitionRate = delta * 1.5;
+      if (Math.abs(transitionFactor - targetFactor) > 0.001) {
+        const transitionRate = delta * 1.25;
 
-        const newFactor = targetFactor > currentFactor
-          ? Math.min(currentFactor + transitionRate, targetFactor)
-          : Math.max(currentFactor - transitionRate, targetFactor);
+        const newFactor = targetFactor > transitionFactor
+          ? Math.min(transitionFactor + transitionRate, targetFactor)
+          : Math.max(transitionFactor - transitionRate, targetFactor);
 
         setTransitionFactor(newFactor);
         shaderMaterial.uniforms.uThemeTransition.value = newFactor;
 
         const interpolatedColor = lerpColor(
-          darkThemeColor,
-          lightThemeColor,
+          darkThemeColors[0],
+          lightThemeColors[0],
           newFactor
         );
 
@@ -158,7 +135,7 @@ const BackgroundPlane: React.FC<BackgroundPlaneProps> = ({
       scale={[viewport.width, viewport.height, 1]}
     >
       <planeGeometry args={[width, height, widthSegments, heightSegments]} />
-      <primitive object={shaderMaterial} attach="material" ref={materialRef} />
+      <primitive object={shaderMaterial} attach="material" />
     </mesh>
   );
 };
