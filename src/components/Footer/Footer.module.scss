@@ -30,11 +30,12 @@
     margin-top: calc(25rem / 2);
 
     .job, .school {
-      max-width: 45%;
+      max-width: 40%;
       font-family: var(--font-thunder);
       font-weight: 100;
-      letter-spacing: 3px;
+      letter-spacing: 1.75px;
       line-height: 1.25rem;
+      font-size: 0.85rem;
     }
 
     .school {
@@ -43,10 +44,13 @@
     }
 
 
-    @media screen and (min-width: 780px) {
+    @media screen and (min-width: 580px) {
       .job, .school {
         max-width: 20%;
         line-height: 1rem;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        letter-spacing: 3px;
       }
     }
   }
@@ -56,6 +60,15 @@
     grid-column: 4 / 5;
     align-self: end;
     justify-self: end;
-  }
 
+    a {
+      font-size: 0.85rem;
+    }
+
+    @media screen and (min-width: 580px) {
+      a {
+          font-size: 1rem;
+        }
+    }
+  }
 }
