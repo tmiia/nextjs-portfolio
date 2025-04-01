@@ -23,8 +23,12 @@
     .title {
       font-size: 10rem;
       font-family: var(--font-thunder);
-      font-weight: 900;
+      font-weight: 800;
       opacity: 0;
+
+      @media screen and (min-width: 780px) {
+        font-weight: 900;
+      }
     }
 
     .subtitle {

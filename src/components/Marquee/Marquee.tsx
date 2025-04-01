@@ -56,9 +56,6 @@ export const Marquee = ({ children, speed = 0.07, play = true, className, contai
     requestAnimationFrame(animation)
   }
 
-  console.log(children);
-
-
   return (
     <div className={`${styles.marquee} ${className}`} ref={marquee}>
       { React.cloneElement(children, {ref: firstTextRef, className: `${children.props.className || ''} ${styles.text}`.trim()}) }

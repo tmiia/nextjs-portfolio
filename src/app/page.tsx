@@ -16,7 +16,6 @@ const fetchHomeData = async () => {
 const Home = async () => {
   try {
     const { data } = await fetchHomeData();
-    console.log("Story data received:", data);
 
     return (
       <div className="container mx-auto">

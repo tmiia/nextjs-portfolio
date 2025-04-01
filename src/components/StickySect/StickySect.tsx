@@ -20,8 +20,6 @@ interface StickySectProps {
 export const StickySect = ({ blok, isLoading }: StickySectProps) => {
   const ref = useRef<HTMLElement>(null)
 
-  console.log(blok);
-
   if (isLoading) {
     return null
   }
