@@ -34,8 +34,7 @@ export const Marquee = ({ children, speed = 0.07, play = true, className, contai
           end: 'bottom bottom',
           scrub: 0.25,
           onUpdate: e => direction = e.direction * -1
-        },
-        x: '-=300px',
+        }
       })
     }
   }, [play]);
