@@ -13,6 +13,7 @@ import { SlideFolder } from "@/components/SlideFolder/SlideFolder";
 import { Footer } from "@/components/Footer/Footer";
 import { StickySect } from "@/components/StickySect/StickySect";
 
+
 const Thunder = localFont({
   src: '../../public/fonts/Thunder-VF.ttf',
   variable: '--font-thunder',
