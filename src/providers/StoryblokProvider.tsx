@@ -2,13 +2,13 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { Page } from "@/components/Page/Page";
 import { Hero } from "@/components/Hero/Hero";
-import { CursorImagesTrail } from "../CursorImagesTrail/CursorImagesTrail";
+import { CursorImagesTrail } from "../components/CursorImagesTrail/CursorImagesTrail";
 import ThemeProvider from "./ThemeProvider";
-import { HighlightedRichText } from "../HighlightedRichText/HighlightedRichText";
-import { RichText } from "../RichText/RichText";
-import { SlideFolder } from "../SlideFolder/SlideFolder";
-import { Footer } from "../Footer/Footer";
-import { StickySect } from "../StickySect/StickySect";
+import { HighlightedRichText } from "../components/HighlightedRichText/HighlightedRichText";
+import { RichText } from "../components/RichText/RichText";
+import { SlideFolder } from "../components/SlideFolder/SlideFolder";
+import { Footer } from "../components/Footer/Footer";
+import { StickySect } from "../components/StickySect/StickySect";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,

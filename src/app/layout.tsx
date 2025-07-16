@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local'
 import "./globals.scss";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
-import StoryblokProvider from "../components/providers/StoryblokProvider";
+import StoryblokProvider from "../providers/StoryblokProvider";
 import { Page } from "@/components/Page/Page";
 import { Hero } from "@/components/Hero/Hero";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
